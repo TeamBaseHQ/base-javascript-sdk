@@ -1,6 +1,7 @@
 {
   "name": "base-javascript-sdk",
   "version": "0.0.1",
+  "description": "Base's official SDK for JavaScript, written using TypeScript.",
   "main": "src/index.ts",
   "scripts": {
     "start": "npm run server:dev",
