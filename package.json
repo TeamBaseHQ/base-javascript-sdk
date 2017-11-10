@@ -48,10 +48,10 @@
     "typescript": "^2.4.1",
     "webpack": "^3.3.0",
     "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "2.5.1"
+    "webpack-dev-server": "2.5.1",
+    "tslint-config-airbnb": "^5.3.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "tslint-config-airbnb": "^5.3.0"
+    "lodash": "^4.17.4"
   }
 }
