@@ -4,6 +4,7 @@
   "description": "Base's official SDK for JavaScript, written using TypeScript.",
   "main": "src/index.ts",
   "repository": "https://github.com/TeamBaseHQ/base-javascript-sdk",
+  "license": "MIT",
   "scripts": {
     "start": "npm run server:dev",
     "server": "npm run server:dev",
@@ -15,7 +16,6 @@
     "clean": "npm cache clear && rimraf -- dist",
     "test": "karma start"
   },
-  "license": "ISC",
   "devDependencies": {
     "@types/jasmine": "^2.5.53",
     "@types/lodash": "^4.14.70",
