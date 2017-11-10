@@ -4,3 +4,4 @@ node_modules/
 tests/
 typings.json
 dist
+npm-debug.log
