@@ -52,6 +52,6 @@
     "tslint-config-airbnb": "^5.3.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "axios": "^0.17.0"
   }
 }

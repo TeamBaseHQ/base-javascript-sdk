@@ -10,7 +10,7 @@ var config = {
     context: path.resolve("./src"),
     entry: {
         app: "./index.ts",
-        vendor: "./vendor.ts"
+        vendor: "./vendor.ts",
     },
     output: {
         path: path.resolve("./dist"),
