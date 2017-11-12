@@ -1,4 +1,4 @@
-declare class BaseModel {
+export default class BaseModel {
     /**
      * Model id
      */

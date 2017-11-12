@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel = /** @class */ (function () {
     function BaseModel() {
         this.id = 0;
@@ -27,4 +29,5 @@ var BaseModel = /** @class */ (function () {
     };
     return BaseModel;
 }());
+exports.default = BaseModel;
 //# sourceMappingURL=BaseModel.js.map
