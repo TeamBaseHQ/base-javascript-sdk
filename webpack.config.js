@@ -13,7 +13,7 @@ var config = {
         vendor: "./vendor.ts",
     },
     output: {
-        path: path.resolve("./dist"),
+        path: path.resolve("./dist/browser"),
         filename: "[name].bundle.js",
         sourceMapFilename: "[name].bundle.map",
         devtoolModuleFilenameTemplate: function (info) {
@@ -67,7 +67,7 @@ var config = {
         }),
     ],
     devServer: {
-        contentBase: path.join(__dirname, "dist/"),
+        contentBase: path.join(__dirname, "dist/browser"),
         compress: true,
         port: 3000,
         hot: true
