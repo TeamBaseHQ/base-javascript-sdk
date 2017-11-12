@@ -1,17 +1,21 @@
 import HttpClientInterface from './http/HttpClientInterface';
+import axios from 'axios';
 import BaseApp from './BaseApp';
 import AccessToken from './auth/AccessToken';
+import AxiosHttpClient from './http/clients/AxiosHttpClient';
 
 export default class Base {
 
   /**
    * Create Base Client.
    *
-   * @param {HttpClientInterface} httpClient
    * @param {BaseApp} baseApp
+   * @param {HttpClientInterface} httpClient
    */
-  constructor(public httpClient: HttpClientInterface, public baseApp: BaseApp) {
-    //
+  constructor(public baseApp: BaseApp, public httpClient?: HttpClientInterface) {
+    if (!httpClient) {
+      this.httpClient = new AxiosHttpClient(axios.create());
+    }
   }
 
   public getHttpClient(): HttpClientInterface {

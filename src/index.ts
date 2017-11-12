@@ -1,7 +1,3 @@
-export default class Main {
-  constructor(public message: string) {
-    console.log(this.message);
-  }
-}
+import Base from './Base';
 
-const start = new Main('Hello World');
+export default Base;

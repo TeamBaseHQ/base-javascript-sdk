@@ -1,45 +1,45 @@
-import axios, {
+import HttpClientInterface from '../HttpClientInterface';
+import AxiosResponseHandler from '../handlers/AxiosResponseHandler';
+
+import {
   AxiosInstance,
 } from 'axios';
-import HttpClientInterface from '../HttpClientInterface';
 
 export default class AxiosHttpClient implements HttpClientInterface {
 
-  public constructor(public client?: AxiosInstance) {
-    if (!client) {
-      this.client = axios.create();
-    }
+  public constructor(public client: AxiosInstance) {
+    //
   }
 
   public get(url: string, params: object): Promise<any> {
-    return this.client
-      .get(url, params);
+    return AxiosResponseHandler.handle(this.client
+      .get(url, params));
   }
 
   public post(url: string, params: object): Promise<any> {
-    return this.client
-      .post(url, params);
+    return AxiosResponseHandler.handle(this.client
+      .post(url, params));
   }
 
   public put(url: string, params: object): Promise<any> {
-    return this.client
-      .put(url, params);
+    return AxiosResponseHandler.handle(this.client
+      .put(url, params));
   }
 
   public patch(url: string, params: object): Promise<any> {
-    return this.client
-      .patch(url, params);
+    return AxiosResponseHandler.handle(this.client
+      .patch(url, params));
   }
 
   public del(url: string, params: object): Promise<any> {
-    return this.client
-      .delete(url, params);
+    return AxiosResponseHandler.handle(this.client
+      .delete(url, params));
   }
 
   setHeaders(headers: object): HttpClientInterface {
-    this.client
-      .defaults
-      .headers = headers;
+    for (let key in headers) {
+      this.client.defaults.headers[key] = headers[key];
+    }
 
     return this;
   }
