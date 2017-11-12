@@ -11,7 +11,7 @@
     "dev:build": "webpack --config ./webpack.config.js --progress --profile --color --display-error-details --display-cached",
     "build": "npm run build:module && npm run build:browser",
     "build:module": "tsc",
-    "build:browser": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail",
+    "build:browser": "cross-env NODE_ENV=production webpack --config ./webpack.config.js  --progress --profile --color --display-error-details --display-cached --bail --display-modules",
     "start": "npm run server:dev",
     "server": "npm run server:dev",
     "server:dev": "webpack-dashboard -- webpack-dev-server --config ./webpack.config.js --hot --inline --progress --watch --open",
