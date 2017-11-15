@@ -10,10 +10,14 @@ export default class UserService {
     return (new User()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
   }
 
+  static makeUserFromResponse(response: any): User {
+    const data = response.data ? response.data.data : {};
+    return (new User()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
+  }
+
   public getUser(id: string): Promise<User> {
     return this.base.get(`/users/${id}`).then((response) => {
-      const data = response.data.data;
-      return UserService.makeUser(data);
+      return UserService.makeUserFromResponse(response);
     });
   }
 
