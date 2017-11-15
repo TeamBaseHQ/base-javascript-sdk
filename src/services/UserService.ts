@@ -24,4 +24,10 @@ export default class UserService {
   public getCurrentUser(): Promise<User> {
     return this.getUser('me');
   }
+
+  public createUser(name: string, email: string, password: string): Promise<User> {
+    return this.base.post('/users').then((response) => {
+      return UserService.makeUserFromResponse(response);
+    });
+  }
 }
