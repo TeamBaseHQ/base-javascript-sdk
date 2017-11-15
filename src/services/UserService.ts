@@ -26,7 +26,13 @@ export default class UserService {
   }
 
   public createUser(name: string, email: string, password: string): Promise<User> {
-    return this.base.post('/users').then((response) => {
+    return this.base.post('/users', {name, email, password}).then((response) => {
+      return UserService.makeUserFromResponse(response);
+    });
+  }
+
+  public updateUser(name: string = '', email: string = '', password: string = ''): Promise<User> {
+    return this.base.patch('/users/me', {name, email, password}).then((response) => {
       return UserService.makeUserFromResponse(response);
     });
   }
