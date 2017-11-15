@@ -16,4 +16,8 @@ export default class UserService {
       return UserService.makeUser(data);
     });
   }
+
+  public getCurrentUser(): Promise<User> {
+    return this.getUser('me');
+  }
 }
