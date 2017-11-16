@@ -9,4 +9,5 @@ export default class UserService {
     getCurrentUser(): Promise<User>;
     createUser(name: string, email: string, password: string): Promise<User>;
     updateUser(name?: string, email?: string, password?: string): Promise<User>;
+    uploadProfilePicture(picture: File): Promise<any>;
 }

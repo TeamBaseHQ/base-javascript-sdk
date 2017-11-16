@@ -36,4 +36,10 @@ export default class UserService {
       return UserService.makeUserFromResponse(response);
     });
   }
+
+  public uploadProfilePicture(picture: File): Promise<any> {
+    return this.base.post('/users/picture', {file: picture}).then((response) => {
+      return UserService.makeUserFromResponse(response);
+    });
+  }
 }
