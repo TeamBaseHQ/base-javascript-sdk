@@ -18,4 +18,16 @@ export default class ChannelService {
       .setSlug(data.slug)
       .setUser_id(data.user_id);
   }
+
+  /**
+   * Get Channel.
+   *
+   * @param {string} slug
+   * @return {Channel}
+   */
+  public getChannel(slug: string): Promise<Channel> {
+    return this.base.get(`/channels/${slug}`).then((response) => {
+      return ChannelService.makeChannelFromResponse(response);
+    });
+  }
 }
