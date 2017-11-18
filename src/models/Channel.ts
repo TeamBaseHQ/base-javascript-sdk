@@ -1,4 +1,4 @@
-class Channel {
+export default class Channel {
   /**
    * Channel name
    */
@@ -47,9 +47,11 @@ class Channel {
    * Set Channel Name
    *
    * @param {string} name
+   * @return {Channel}
    */
-  public setName(name: string) {
+  public setName(name: string): Channel {
     this.name = name;
+    return this;
   }
 
   /**
@@ -65,9 +67,11 @@ class Channel {
    * Set Channel Description
    *
    * @param {string} description
+   * @return {Channel}
    */
-  public setDescription(description: string) {
+  public setDescription(description: string): Channel {
     this.description = description;
+    return this;
   }
 
   /**
@@ -83,9 +87,11 @@ class Channel {
    * Set Channel Color
    *
    * @param {string} color
+   * @return {Channel}
    */
-  public setColor(color: string) {
+  public setColor(color: string): Channel {
     this.color = color;
+    return this;
   }
 
   /**
@@ -101,9 +107,11 @@ class Channel {
    * Set Channel Type
    *
    * @param {string} type
+   * @return {Channel}
    */
-  public setType(type: string) {
+  public setType(type: string): Channel {
     this.type = type;
+    return this;
   }
 
   /**
@@ -120,8 +128,9 @@ class Channel {
    *
    * @param {number} user_id
    */
-  public setUser_id(user_id: number) {
+  public setUser_id(user_id: number): Channel {
     this.user_id = user_id;
+    return this;
   }
 
   /**
@@ -138,8 +147,9 @@ class Channel {
    *
    * @param {number} team_id
    */
-  public setTeam_id(team_id: number) {
+  public setTeam_id(team_id: number): Channel {
     this.team_id = team_id;
+    return this;
   }
 
   /**
@@ -155,9 +165,11 @@ class Channel {
    * Set Channel Slug
    *
    * @param {string} slug
+   * @return {Channel}
    */
-  public setSlug(slug: string) {
+  public setSlug(slug: string): Channel {
     this.slug = slug;
+    return this;
   }
 
   constructor() {
