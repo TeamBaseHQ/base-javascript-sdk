@@ -30,4 +30,17 @@ export default class ChannelService {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
+
+  /**
+   * Create Channel.
+   *
+   * @param {string} name
+   * @param {string} description
+   * @return {Channel}
+   */
+  public createChannel(name: string, description?: string): Promise<Channel> {
+    return this.base.post(`/channels`).then((response) => {
+      return ChannelService.makeChannelFromResponse(response);
+    });
+  }
 }
