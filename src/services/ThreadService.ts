@@ -45,4 +45,22 @@ export default class ThreadService {
       return ThreadService.makeThreadFromResponse(response);
     });
   }
+
+  /**
+   * Update Thread.
+   *
+   * @param {string} team
+   * @param {string} slug
+   * @param {string} subject
+   * @param {string} description
+   * @return {Thread}
+   */
+  public updateThread(team: string, channel: string, slug: string, subject?: string,
+                      description?: string): Promise<Thread> {
+    return this.base.patch(`/teams/${team}/channels/${channel}/threads/${slug}`, {
+      subject, description
+    }).then((response) => {
+      return ThreadService.makeThreadFromResponse(response);
+    });
+  }
 }
