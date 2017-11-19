@@ -7,8 +7,6 @@ export default class TeamMemberService {
     //
   }
 
-  public User
-
   /**
    * Get Team Member.
    *
