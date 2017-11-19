@@ -23,4 +23,17 @@ export default class TeamMemberService {
       });
   }
 
+  /**
+   * Get All Team Members.
+   *
+   * @param {string} slug
+   * @return {Promise<BaseCollection<User>>}
+   */
+  getAllTeamMembers(slug: string): Promise<BaseCollection<User>> {
+    return this.base.get(`/teams/${slug}/members`)
+      .then((response) => {
+        return new BaseCollection<User>(response.data, User);
+      });
+  }
+
 }
