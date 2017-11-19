@@ -49,9 +49,7 @@ export default class MessageService {
                        content: string, type?: string): Promise<Message> {
     return this.base.post(`/teams/${team}/channels/${channel}/threads/${thread}`, {
       content, type,
-    }).then((response) => {
-      return MessageService.makeMessageFromResponse(response);
-    });
+    }).then(response => MessageService.makeMessageFromResponse(response));
   }
 
   /**
@@ -70,9 +68,7 @@ export default class MessageService {
     return this.base.patch(
       `/teams/${team}/channels/${channel}/threads/${thread}/messages/${slug}`, {
         content, type,
-      }).then((response) => {
-      return MessageService.makeMessageFromResponse(response);
-    });
+      }).then(response => MessageService.makeMessageFromResponse(response));
   }
 
   /**
@@ -88,9 +84,7 @@ export default class MessageService {
                         page: string = '1', limit?: string): Promise<Message> {
     return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}`, {
       page, limit,
-    }).then((response) => {
-      return MessageService.makeMessageFromResponse(response);
-    });
+    }).then(response => MessageService.makeMessageFromResponse(response));
   }
 
   /**
