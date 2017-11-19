@@ -86,4 +86,19 @@ export default class ThreadService {
       return ThreadService.makeThreadFromResponse(response);
     });
   }
+
+  /**
+   * Delete Thread.
+   *
+   * @param {string} team
+   * @param channel
+   * @param {string} slug
+   * @return {Thread}
+   */
+  public deleteThread(team: string, channel: string, slug: string): Promise<boolean> {
+    return this.base.del(`/channels/${channel}/threads/${slug}`)
+      .then((response) => {
+        return true;
+      });
+  }
 }
