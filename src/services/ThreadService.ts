@@ -1,5 +1,6 @@
 import Thread from '../models/Thread';
 import Base from '../Base';
+import BaseCollection from '../models/BaseCollection';
 
 export default class ThreadService {
   constructor(public base: Base) {
@@ -13,6 +14,11 @@ export default class ThreadService {
 
   static makeThread(data: any): Thread {
     return new Thread(data);
+  }
+
+  static makeCollectionFromResponse(response: any): BaseCollection<Thread> {
+    const responseData = response.data;
+    return new BaseCollection(responseData, Thread);
   }
 
   /**
@@ -72,14 +78,14 @@ export default class ThreadService {
    * @param channel
    * @param {string} page
    * @param {string} limit
-   * @return {Promise<Thread>}
+   * @return {Promise<BaseCollection<Thread>>}
    */
   public getAllThreads(team: string, channel: string,
-                       page: string = '1', limit?: string): Promise<Thread> {
+                       page: string = '1', limit?: string): Promise<BaseCollection<Thread>> {
     return this.base.get(`/teams/${team}/channels/${channel}/threads`, {
       page, limit,
     }).then((response) => {
-      return ThreadService.makeThreadFromResponse(response);
+      return ThreadService.makeCollectionFromResponse(response);
     });
   }
 

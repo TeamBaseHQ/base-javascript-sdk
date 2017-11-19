@@ -1,10 +1,12 @@
 import Base from '../Base';
 import Message from '../models/Message';
+import BaseCollection from '../models/BaseCollection';
 export default class MessageService {
     base: Base;
     constructor(base: Base);
     static makeMessageFromResponse(response: any): Message;
     static makeMessage(data: any): Message;
+    static makeCollectionFromResponse(response: any): BaseCollection<Message>;
     /**
      * Get Message.
      *
@@ -43,11 +45,12 @@ export default class MessageService {
      *
      * @param {string} team
      * @param channel
+     * @param thread
      * @param {string} page
      * @param {string} limit
-     * @return {Promise<Message>}
+     * @return {Promise<BaseCollection<Message>>}
      */
-    getAllMessages(team: string, channel: string, thread: string, page?: string, limit?: string): Promise<Message>;
+    getAllMessages(team: string, channel: string, thread: string, page?: string, limit?: string): Promise<BaseCollection<Message>>;
     /**
      * Delete Message.
      *

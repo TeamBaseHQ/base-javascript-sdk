@@ -1,10 +1,12 @@
 import Thread from '../models/Thread';
 import Base from '../Base';
+import BaseCollection from '../models/BaseCollection';
 export default class ThreadService {
     base: Base;
     constructor(base: Base);
     static makeThreadFromResponse(response: any): Thread;
     static makeThread(data: any): Thread;
+    static makeCollectionFromResponse(response: any): BaseCollection<Thread>;
     /**
      * Get Thread.
      *
@@ -41,9 +43,9 @@ export default class ThreadService {
      * @param channel
      * @param {string} page
      * @param {string} limit
-     * @return {Promise<Thread>}
+     * @return {Promise<BaseCollection<Thread>>}
      */
-    getAllThreads(team: string, channel: string, page?: string, limit?: string): Promise<Thread>;
+    getAllThreads(team: string, channel: string, page?: string, limit?: string): Promise<BaseCollection<Thread>>;
     /**
      * Delete Thread.
      *

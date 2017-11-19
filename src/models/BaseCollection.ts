@@ -1,5 +1,3 @@
-import BaseModel from './BaseModel';
-
 export default class BaseCollection<T> {
   data: T[];
 

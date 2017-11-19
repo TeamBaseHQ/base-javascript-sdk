@@ -1,10 +1,12 @@
 import Team from '../models/Team';
 import Base from '../Base';
+import BaseCollection from '../models/BaseCollection';
 export default class TeamService {
     base: Base;
     constructor(base: Base);
     static makeTeamFromResponse(response: any): Team;
     static makeTeam(data: any): Team;
+    static makeCollectionFromResponse(response: any): BaseCollection<Team>;
     /**
      * Get Team.
      *
@@ -34,9 +36,9 @@ export default class TeamService {
      *
      * @param {string} page
      * @param {string} limit
-     * @return {Promise<Team>}
+     * @return {Promise<BaseCollection<Team>>}
      */
-    getAllTeams(page?: string, limit?: string): Promise<Team>;
+    getAllTeams(page?: string, limit?: string): Promise<BaseCollection<Team>>;
     /**
      * Delete Team.
      *

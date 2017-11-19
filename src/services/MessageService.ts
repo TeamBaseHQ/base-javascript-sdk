@@ -1,5 +1,6 @@
 import Base from '../Base';
 import Message from '../models/Message';
+import BaseCollection from '../models/BaseCollection';
 
 export default class MessageService {
   constructor(public base: Base) {
@@ -13,6 +14,11 @@ export default class MessageService {
 
   static makeMessage(data: any): Message {
     return new Message(data);
+  }
+
+  static makeCollectionFromResponse(response: any): BaseCollection<Message> {
+    const responseData = response.data;
+    return new BaseCollection(responseData, Message);
   }
 
   /**
@@ -72,15 +78,16 @@ export default class MessageService {
    *
    * @param {string} team
    * @param channel
+   * @param thread
    * @param {string} page
    * @param {string} limit
-   * @return {Promise<Message>}
+   * @return {Promise<BaseCollection<Message>>}
    */
   public getAllMessages(team: string, channel: string, thread: string,
-                        page: string = '1', limit?: string): Promise<Message> {
+                        page: string = '1', limit?: string): Promise<BaseCollection<Message>> {
     return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}`, {
       page, limit,
-    }).then(response => MessageService.makeMessageFromResponse(response));
+    }).then(response => MessageService.makeCollectionFromResponse(response));
   }
 
   /**
