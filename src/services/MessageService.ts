@@ -53,4 +53,25 @@ export default class MessageService {
       return MessageService.makeMessageFromResponse(response);
     });
   }
+
+  /**
+   * Update Message.
+   *
+   * @param {string} team
+   * @param channel
+   * @param thread
+   * @param {string} slug
+   * @param {string} content
+   * @param {string} type
+   * @return {Message}
+   */
+  public updateMessage(team: string, channel: string, thread: string,
+                       slug: string, content?: string, type?: string): Promise<Message> {
+    return this.base.patch(
+      `/teams/${team}/channels/${channel}/threads/${thread}/messages/${slug}`, {
+        content, type,
+      }).then((response) => {
+      return MessageService.makeMessageFromResponse(response);
+    });
+  }
 }
