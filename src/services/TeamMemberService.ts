@@ -39,5 +39,17 @@ export default class TeamMemberService {
       });
   }
 
-
+  /**
+   * Add Team Member.
+   *
+   * @param {string} slug
+   * @param {string} user_id
+   * @return {Promise<boolean>}
+   */
+  addTeamMember(slug: string, user_id: string): Promise<boolean> {
+    return this.base.post(`/teams/${slug}/members/`, {user_id})
+      .then((response) => {
+        return true;
+      });
+  }
 }
