@@ -6,6 +6,8 @@ import AxiosHttpClient from './http/clients/AxiosHttpClient';
 import UserService from './services/UserService';
 import ChannelService from './services/ChannelService';
 import TeamService from './services/TeamService';
+import MessageService from './services/MessageService';
+import ThreadService from './services/ThreadService';
 
 export default class Base {
 
@@ -15,14 +17,24 @@ export default class Base {
   private userServiceObj: UserService;
 
   /**
+   * Team Service Object.
+   */
+  private teamServiceObj: TeamService;
+
+  /**
    * Channel Service Object.
    */
   private channelServiceObj: ChannelService;
 
   /**
-   * Team Service Object.
+   * Thread Service Object.
    */
-  private teamServiceObj: TeamService;
+  private threadServiceObj: ThreadService;
+
+  /**
+   * Message Service Object.
+   */
+  private messageServiceObj: MessageService;
 
   /**
    * Create Base Client.
@@ -43,7 +55,9 @@ export default class Base {
    */
   private bootstrapServices(): void {
     this.userServiceObj = new UserService(this);
+    this.teamServiceObj = new TeamService(this);
     this.channelServiceObj = new ChannelService(this);
+    this.messageServiceObj = new MessageService(this);
   }
 
   public getHttpClient(): HttpClientInterface {
@@ -185,5 +199,23 @@ export default class Base {
    */
   public teamService(): TeamService {
     return this.teamServiceObj;
+  }
+
+  /**
+   * Get Thread Service object.
+   *
+   * @return {ThreadService}
+   */
+  public threadService(): ThreadService {
+    return this.threadServiceObj;
+  }
+
+  /**
+   * Get Message Service object.
+   *
+   * @return {MessageService}
+   */
+  public messageService(): MessageService {
+    return this.messageServiceObj;
   }
 }

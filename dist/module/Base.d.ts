@@ -4,6 +4,7 @@ import AccessToken from './auth/AccessToken';
 import UserService from './services/UserService';
 import ChannelService from './services/ChannelService';
 import TeamService from './services/TeamService';
+import MessageService from './services/MessageService';
 export default class Base {
     baseApp: BaseApp;
     httpClient: HttpClientInterface;
@@ -12,13 +13,21 @@ export default class Base {
      */
     private userServiceObj;
     /**
+     * Team Service Object.
+     */
+    private teamServiceObj;
+    /**
      * Channel Service Object.
      */
     private channelServiceObj;
     /**
-     * Team Service Object.
+     * Thread Service Object.
      */
-    private teamServiceObj;
+    private threadServiceObj;
+    /**
+     * Message Service Object.
+     */
+    private messageServiceObj;
     /**
      * Create Base Client.
      *
@@ -101,4 +110,10 @@ export default class Base {
      * @return {TeamService}
      */
     teamService(): TeamService;
+    /**
+     * Get Message Service object.
+     *
+     * @return {MessageService}
+     */
+    messageService(): MessageService;
 }
