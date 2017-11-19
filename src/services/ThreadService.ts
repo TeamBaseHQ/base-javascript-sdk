@@ -63,4 +63,19 @@ export default class ThreadService {
       return ThreadService.makeThreadFromResponse(response);
     });
   }
+
+  /**
+   * List of Threads. Paginated.
+   *
+   * @param {string} team
+   * @param channel
+   * @param {string} page
+   * @param {string} limit
+   * @return {Promise<Thread>}
+   */
+  public getAllThreads(team: string, channel: string, page: string = '1', limit?: string): Promise<Thread> {
+    return this.base.get(`/teams/${team}/channels/${channel}/threads`, {page, limit}).then((response) => {
+      return ThreadService.makeThreadFromResponse(response);
+    });
+  }
 }
