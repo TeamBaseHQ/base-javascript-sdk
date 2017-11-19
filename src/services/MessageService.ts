@@ -18,4 +18,20 @@ export default class MessageService {
       .setSlug(data.slug)
       .setUser_id(data.user_id);
   }
+
+  /**
+   * Get Message.
+   *
+   * @param {string} team
+   * @param channel
+   * @param thread
+   * @param {string} slug
+   * @return {Message}
+   */
+  public getMessage(team: string, channel: string, thread: string, slug: string): Promise<Message> {
+    return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}/messages/${slug}`)
+      .then((response) => {
+        return MessageService.makeMessageFromResponse(response);
+      });
+  }
 }
