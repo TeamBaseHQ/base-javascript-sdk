@@ -36,12 +36,13 @@ export default class ThreadService {
    * Create Thread.
    *
    * @param {string} team
+   * @param channel
    * @param {string} subject
    * @param {string} description
    * @return {Thread}
    */
   public createThread(team: string, channel: string, subject: string, description?: string): Promise<Thread> {
-    return this.base.post(`/teams/${team}/channels`, {subject, description}).then((response) => {
+    return this.base.post(`/teams/${team}/channels/${channel}`, {subject, description}).then((response) => {
       return ThreadService.makeThreadFromResponse(response);
     });
   }
