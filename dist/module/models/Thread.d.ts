@@ -88,5 +88,5 @@ export default class Thread extends BaseModel {
      * @return
      */
     setSlug(slug: string): Thread;
-    constructor();
+    constructor(data: any);
 }

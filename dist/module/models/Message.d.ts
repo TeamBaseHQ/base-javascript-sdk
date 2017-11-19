@@ -127,5 +127,5 @@ export default class Message extends BaseModel {
      * @return {Message}
      */
     setSlug(slug: string): Message;
-    constructor();
+    constructor(data: any);
 }

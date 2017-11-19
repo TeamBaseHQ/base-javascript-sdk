@@ -18,5 +18,5 @@ export default class User extends BaseModel {
     setEmail(email: string): User;
     isVerified(): boolean;
     setIsVerified(is_verified: boolean): User;
-    constructor();
+    constructor(data: any);
 }

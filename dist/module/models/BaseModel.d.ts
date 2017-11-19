@@ -11,7 +11,7 @@ export default class BaseModel {
      * Model updated_at
      */
     updated_at: string;
-    constructor();
+    constructor(data: any);
     getId(): number;
     setId(id: number): BaseModel;
     getCreated_at(): string;
