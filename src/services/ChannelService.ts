@@ -43,4 +43,18 @@ export default class ChannelService {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
+
+  /**
+   * Update Channel.
+   *
+   * @param {string} slug
+   * @param {string} name
+   * @param {string} description
+   * @return {Channel}
+   */
+  public updateChannel(slug: string, name?: string, description?: string): Promise<Channel> {
+    return this.base.patch(`/channels/${slug}`).then((response) => {
+      return ChannelService.makeChannelFromResponse(response);
+    });
+  }
 }
