@@ -74,4 +74,22 @@ export default class MessageService {
       return MessageService.makeMessageFromResponse(response);
     });
   }
+
+  /**
+   * List of Messages. Paginated.
+   *
+   * @param {string} team
+   * @param channel
+   * @param {string} page
+   * @param {string} limit
+   * @return {Promise<Message>}
+   */
+  public getAllMessages(team: string, channel: string, thread: string,
+                        page: string = '1', limit?: string): Promise<Message> {
+    return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}`, {
+      page, limit,
+    }).then((response) => {
+      return MessageService.makeMessageFromResponse(response);
+    });
+  }
 }
