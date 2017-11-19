@@ -5,6 +5,7 @@ import AccessToken from './auth/AccessToken';
 import AxiosHttpClient from './http/clients/AxiosHttpClient';
 import UserService from './services/UserService';
 import ChannelService from './services/ChannelService';
+import TeamService from './services/TeamService';
 
 export default class Base {
 
@@ -17,6 +18,11 @@ export default class Base {
    * Channel Service Object.
    */
   private channelServiceObj: ChannelService;
+
+  /**
+   * Team Service Object.
+   */
+  private teamServiceObj: TeamService;
 
   /**
    * Create Base Client.
@@ -170,5 +176,14 @@ export default class Base {
    */
   public channelService(): ChannelService {
     return this.channelServiceObj;
+  }
+
+  /**
+   * Get Team Service object.
+   *
+   * @return {TeamService}
+   */
+  public teamService(): TeamService {
+    return this.teamServiceObj;
   }
 }

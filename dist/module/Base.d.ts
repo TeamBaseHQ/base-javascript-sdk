@@ -3,6 +3,7 @@ import BaseApp from './BaseApp';
 import AccessToken from './auth/AccessToken';
 import UserService from './services/UserService';
 import ChannelService from './services/ChannelService';
+import TeamService from './services/TeamService';
 export default class Base {
     baseApp: BaseApp;
     httpClient: HttpClientInterface;
@@ -14,6 +15,10 @@ export default class Base {
      * Channel Service Object.
      */
     private channelServiceObj;
+    /**
+     * Team Service Object.
+     */
+    private teamServiceObj;
     /**
      * Create Base Client.
      *
@@ -90,4 +95,10 @@ export default class Base {
      * @return {ChannelService}
      */
     channelService(): ChannelService;
+    /**
+     * Get Team Service object.
+     *
+     * @return {TeamService}
+     */
+    teamService(): TeamService;
 }
