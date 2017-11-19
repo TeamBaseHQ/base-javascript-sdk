@@ -92,4 +92,21 @@ export default class MessageService {
       return MessageService.makeMessageFromResponse(response);
     });
   }
+
+  /**
+   * Delete Message.
+   *
+   * @param {string} team
+   * @param channel
+   * @param thread
+   * @param {string} slug
+   * @return {Message}
+   */
+  public deleteMessage(team: string, channel: string,
+                       thread: string, slug: string): Promise<boolean> {
+    return this.base.del(`/channels/${channel}/threads/${thread}/messages/${slug}`)
+      .then((response) => {
+        return true;
+      });
+  }
 }
