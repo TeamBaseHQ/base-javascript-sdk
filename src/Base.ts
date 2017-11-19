@@ -3,6 +3,8 @@ import axios from 'axios';
 import BaseApp from './BaseApp';
 import AccessToken from './auth/AccessToken';
 import AxiosHttpClient from './http/clients/AxiosHttpClient';
+import UserService from './services/UserService';
+import ChannelService from './services/ChannelService';
 
 export default class Base {
 
@@ -16,6 +18,16 @@ export default class Base {
     if (!httpClient) {
       this.httpClient = new AxiosHttpClient(axios.create());
     }
+
+    this.bootstrapServices();
+  }
+
+  /**
+   * Bootstrap Services.
+   */
+  private bootstrapServices(): void {
+    this.userService = new UserService(this);
+    this.channelService = new ChannelService(this);
   }
 
   public getHttpClient(): HttpClientInterface {
