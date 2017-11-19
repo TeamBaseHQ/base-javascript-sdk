@@ -19,9 +19,11 @@ export default class ChannelService {
      * @param {string} team
      * @param {string} name
      * @param {string} description
+     * @param color
+     * @param is_private
      * @return {Channel}
      */
-    createChannel(team: string, name: string, description?: string): Promise<Channel>;
+    createChannel(team: string, name: string, description?: string, color?: string, is_private?: boolean): Promise<Channel>;
     /**
      * Update Channel.
      *
@@ -29,9 +31,11 @@ export default class ChannelService {
      * @param {string} slug
      * @param {string} name
      * @param {string} description
+     * @param color
+     * @param is_private
      * @return {Channel}
      */
-    updateChannel(team: string, slug: string, name?: string, description?: string): Promise<Channel>;
+    updateChannel(team: string, slug: string, name?: string, description?: string, color?: string, is_private?: boolean): Promise<Channel>;
     /**
      * List of Channels. Paginated.
      *

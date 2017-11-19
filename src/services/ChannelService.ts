@@ -38,10 +38,12 @@ export default class ChannelService {
    * @param {string} team
    * @param {string} name
    * @param {string} description
+   * @param color
+   * @param is_private
    * @return {Channel}
    */
-  public createChannel(team: string, name: string, description?: string): Promise<Channel> {
-    return this.base.post(`/teams/${team}/channels`, {name, description}).then((response) => {
+  public createChannel(team: string, name: string, description?: string, color?: string, is_private: boolean = false): Promise<Channel> {
+    return this.base.post(`/teams/${team}/channels`, {name, description, color, is_private}).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
@@ -53,11 +55,14 @@ export default class ChannelService {
    * @param {string} slug
    * @param {string} name
    * @param {string} description
+   * @param color
+   * @param is_private
    * @return {Channel}
    */
-  public updateChannel(team: string, slug: string, name?: string,
-                       description?: string): Promise<Channel> {
-    return this.base.patch(`/teams/${team}/channels/${slug}`, {name, description}).then((response) => {
+  public updateChannel(team: string, slug: string, name?: string, description?: string, color?: string, is_private: boolean = false): Promise<Channel> {
+    return this.base.patch(`/teams/${team}/channels/${slug}`, {
+      name, description, color, is_private
+    }).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
