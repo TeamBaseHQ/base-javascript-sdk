@@ -8,7 +8,7 @@ export default class ChannelService {
     /**
      * Get Channel.
      *
-     * @param team
+     * @param {string} team
      * @param {string} slug
      * @return {Channel}
      */
@@ -16,7 +16,7 @@ export default class ChannelService {
     /**
      * Create Channel.
      *
-     * @param team
+     * @param {string} team
      * @param {string} name
      * @param {string} description
      * @return {Channel}
@@ -25,7 +25,7 @@ export default class ChannelService {
     /**
      * Update Channel.
      *
-     * @param team
+     * @param {string} team
      * @param {string} slug
      * @param {string} name
      * @param {string} description
@@ -35,7 +35,7 @@ export default class ChannelService {
     /**
      * List of Channels. Paginated.
      *
-     * @param team
+     * @param {string} team
      * @param {string} page
      * @param {string} limit
      * @return {Promise<Channel>}
@@ -44,8 +44,9 @@ export default class ChannelService {
     /**
      * Delete Channel.
      *
+     * @param {string} team
      * @param {string} slug
      * @return {Channel}
      */
-    deleteChannel(slug: string): Promise<boolean>;
+    deleteChannel(team: string, slug: string): Promise<boolean>;
 }
