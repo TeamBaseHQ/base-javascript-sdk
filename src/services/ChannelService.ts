@@ -70,4 +70,16 @@ export default class ChannelService {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
+
+  /**
+   * Delete Channel.
+   *
+   * @param {string} slug
+   * @return {Channel}
+   */
+  public deleteChannel(slug: string): Promise<boolean> {
+    return this.base.del(`/channels/${slug}`).then((response) => {
+      return true;
+    });
+  }
 }
