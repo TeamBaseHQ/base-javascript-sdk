@@ -21,4 +21,21 @@ export default class ChannelMemberService {
         return new User(response.data.data);
       });
   }
+
+  /**
+   * Get All Team Members.
+   *
+   * @param team
+   * @param {string} slug
+   * @param page
+   * @param limit
+   * @return {Promise<BaseCollection<User>>}
+   */
+  getAllChannelMembers(team: string, slug: string,
+                    page: string = '1', limit?: string): Promise<BaseCollection<User>> {
+    return this.base.get(`/teams/${team}/channels/${slug}/members`, {page, limit})
+      .then((response) => {
+        return new BaseCollection<User>(response.data, User);
+      });
+  }
 }
