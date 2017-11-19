@@ -57,4 +57,17 @@ export default class ChannelService {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
+
+  /**
+   * List of Channels. Paginated.
+   *
+   * @param {string} page
+   * @param {string} limit
+   * @return {Promise<Channel>}
+   */
+  public getAllChannels(page: string = '1', limit?: string): Promise<Channel> {
+    return this.base.get(`/channels`, {page, limit}).then((response) => {
+      return ChannelService.makeChannelFromResponse(response);
+    });
+  }
 }
