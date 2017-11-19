@@ -1,10 +1,12 @@
 import Channel from '../models/Channel';
 import Base from '../Base';
+import BaseCollection from '../models/BaseCollection';
 export default class ChannelService {
     base: Base;
     constructor(base: Base);
     static makeChannelFromResponse(response: any): Channel;
     static makeChannel(data: any): Channel;
+    static makeCollectionFromResponse(response: any): BaseCollection<Channel>;
     /**
      * Get Channel.
      *
@@ -42,9 +44,9 @@ export default class ChannelService {
      * @param {string} team
      * @param {string} page
      * @param {string} limit
-     * @return {Promise<Channel>}
+     * @return {Promise<BaseCollection<Channel>>}
      */
-    getAllChannels(team: string, page?: string, limit?: string): Promise<Channel>;
+    getAllChannels(team: string, page?: string, limit?: string): Promise<BaseCollection<Channel>>;
     /**
      * Delete Channel.
      *
