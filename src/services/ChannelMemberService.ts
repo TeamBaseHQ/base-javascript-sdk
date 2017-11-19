@@ -53,4 +53,19 @@ export default class ChannelMemberService {
         return true;
       });
   }
+
+  /**
+   * Remove Team Member.
+   *
+   * @param team
+   * @param {string} slug
+   * @param {string} user_id
+   * @return {Promise<boolean>}
+   */
+  removeChannelMember(team: string, slug: string, user_id: string): Promise<boolean> {
+    return this.base.del(`/teams/${team}/channels/${slug}/members/${user_id}`)
+      .then((response) => {
+        return true;
+      });
+  }
 }
