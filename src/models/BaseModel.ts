@@ -14,10 +14,10 @@ export default class BaseModel {
    */
   updated_at: string;
 
-  constructor() {
-    this.id = 0;
-    this.created_at = null;
-    this.updated_at = null;
+  constructor(data: any) {
+    this.id = data.id;
+    this.created_at = data.created_at;
+    this.updated_at = data.updated_at;
   }
 
   public getId(): number {

@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import User from './User';
 
 export default class Team extends BaseModel {
   /**
@@ -25,6 +26,11 @@ export default class Team extends BaseModel {
    * Team slug.
    */
   slug: string;
+
+  /**
+   * Team Owner.
+   */
+  owner: User;
 
   /**
    * Return User Name
@@ -111,6 +117,24 @@ export default class Team extends BaseModel {
   }
 
   /**
+   * Get Owner.
+   *
+   * @return {User}
+   */
+  getOwner(): User {
+    return this.owner;
+  }
+
+  /**
+   * Set Owner.
+   *
+   * @param {User} owner
+   */
+  setOwner(owner: User) {
+    this.owner = owner;
+  }
+
+  /**
    * Return User Slug
    *
    * @return {string} Slug
@@ -131,12 +155,13 @@ export default class Team extends BaseModel {
     return this;
   }
 
-  constructor() {
-    super();
-    this.name = null;
-    this.description = null;
-    this.invitation_code = null;
-    this.user_id = null;
-    this.slug = null;
+  constructor(data: any) {
+    super(data);
+    this.name = data.name;
+    this.description = data.description;
+    this.invitation_code = data.invitation_code;
+    this.user_id = data.user_id;
+    this.owner = data.owner;
+    this.slug = data.slug;
   }
 }

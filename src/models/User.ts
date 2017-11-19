@@ -43,10 +43,10 @@ export default class User extends BaseModel {
     return this;
   }
 
-  constructor() {
-    super();
-    this.name = null;
-    this.email = null;
-    this.is_verified = false;
+  constructor(data: any) {
+    super(data);
+    this.name = data.name;
+    this.email = data.email;
+    this.is_verified = data.is_verified;
   }
 }

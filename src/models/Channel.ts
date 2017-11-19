@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import User from './User';
 
 export default class Channel extends BaseModel {
   /**
@@ -35,6 +36,11 @@ export default class Channel extends BaseModel {
    * Channel slug
    */
   slug: string;
+
+  /**
+   * Team Owner.
+   */
+  owner: User;
 
   /**
    * Return Channel Name
@@ -174,14 +180,33 @@ export default class Channel extends BaseModel {
     return this;
   }
 
-  constructor() {
-    super();
-    this.name = null;
-    this.description = null;
-    this.color = null;
-    this.type = null;
-    this.user_id = null;
-    this.team_id = null;
-    this.slug = null;
+  /**
+   * Get Owner.
+   *
+   * @return {User}
+   */
+  getOwner(): User {
+    return this.owner;
+  }
+
+  /**
+   * Set Owner.
+   *
+   * @param {User} owner
+   */
+  setOwner(owner: User) {
+    this.owner = owner;
+  }
+
+  constructor(data: any) {
+    super(data);
+    this.name = data.name;
+    this.description = data.description;
+    this.color = data.color;
+    this.type = data.type;
+    this.user_id = data.user_id;
+    this.team_id = data.team_id;
+    this.owner = new User(data.owner);
+    this.slug = data.slug;
   }
 }

@@ -184,14 +184,14 @@ export default class Message extends BaseModel {
     return this;
   }
 
-  constructor() {
-    super();
-    this.content = null;
-    this.type = null;
-    this.thread_id = null;
-    this.sender_id = null;
-    this.sender_type = null;
-    this.slug = null;
-    this.sender = null;
+  constructor(data: any) {
+    super(data);
+    this.content = data.content;
+    this.type = data.type;
+    this.thread_id = data.thread_id;
+    this.sender_id = data.sender_id;
+    this.sender_type = data.sender_type;
+    this.slug = data.slug;
+    this.sender = new User(data.sender);
   }
 }
