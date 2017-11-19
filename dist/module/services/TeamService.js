@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Team_1 = require("../models/Team");
+var BaseCollection_1 = require("../models/BaseCollection");
 var TeamService = /** @class */ (function () {
     function TeamService(base) {
         this.base = base;
@@ -11,11 +12,11 @@ var TeamService = /** @class */ (function () {
         return TeamService.makeTeam(data);
     };
     TeamService.makeTeam = function (data) {
-        return (new Team_1.default())
-            .setName(data.name)
-            .setDescription(data.description)
-            .setSlug(data.slug)
-            .setUser_id(data.user_id);
+        return new Team_1.default(data);
+    };
+    TeamService.makeCollectionFromResponse = function (response) {
+        var responseData = response.data;
+        return new BaseCollection_1.default(responseData, Team_1.default);
     };
     /**
      * Get Team.
@@ -36,7 +37,7 @@ var TeamService = /** @class */ (function () {
      * @return {Team}
      */
     TeamService.prototype.createTeam = function (name, description) {
-        return this.base.post("/teams").then(function (response) {
+        return this.base.post("/teams", { name: name, description: description }).then(function (response) {
             return TeamService.makeTeamFromResponse(response);
         });
     };
@@ -49,7 +50,7 @@ var TeamService = /** @class */ (function () {
      * @return {Team}
      */
     TeamService.prototype.updateTeam = function (slug, name, description) {
-        return this.base.patch("/teams/" + slug).then(function (response) {
+        return this.base.patch("/teams/" + slug, { name: name, description: description }).then(function (response) {
             return TeamService.makeTeamFromResponse(response);
         });
     };
@@ -58,12 +59,12 @@ var TeamService = /** @class */ (function () {
      *
      * @param {string} page
      * @param {string} limit
-     * @return {Promise<Team>}
+     * @return {Promise<BaseCollection<Team>>}
      */
     TeamService.prototype.getAllTeams = function (page, limit) {
         if (page === void 0) { page = '0'; }
         return this.base.get("/teams", { page: page, limit: limit }).then(function (response) {
-            return TeamService.makeTeamFromResponse(response);
+            return TeamService.makeCollectionFromResponse(response);
         });
     };
     /**

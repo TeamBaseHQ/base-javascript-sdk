@@ -1,12 +1,27 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Team = /** @class */ (function () {
-    function Team() {
-        this.name = null;
-        this.description = null;
-        this.invitation_code = null;
-        this.user_id = null;
-        this.slug = null;
+var BaseModel_1 = require("./BaseModel");
+var Team = /** @class */ (function (_super) {
+    __extends(Team, _super);
+    function Team(data) {
+        var _this = _super.call(this, data) || this;
+        _this.name = data.name;
+        _this.description = data.description;
+        _this.invitation_code = data.invitation_code;
+        _this.user_id = data.user_id;
+        _this.owner = data.owner;
+        _this.slug = data.slug;
+        return _this;
     }
     /**
      * Return User Name
@@ -85,6 +100,22 @@ var Team = /** @class */ (function () {
         return this;
     };
     /**
+     * Get Owner.
+     *
+     * @return {User}
+     */
+    Team.prototype.getOwner = function () {
+        return this.owner;
+    };
+    /**
+     * Set Owner.
+     *
+     * @param {User} owner
+     */
+    Team.prototype.setOwner = function (owner) {
+        this.owner = owner;
+    };
+    /**
      * Return User Slug
      *
      * @return {string} Slug
@@ -104,6 +135,6 @@ var Team = /** @class */ (function () {
         return this;
     };
     return Team;
-}());
+}(BaseModel_1.default));
 exports.default = Team;
 //# sourceMappingURL=Team.js.map

@@ -5,6 +5,11 @@ var AccessToken_1 = require("./auth/AccessToken");
 var AxiosHttpClient_1 = require("./http/clients/AxiosHttpClient");
 var UserService_1 = require("./services/UserService");
 var ChannelService_1 = require("./services/ChannelService");
+var TeamService_1 = require("./services/TeamService");
+var MessageService_1 = require("./services/MessageService");
+var ThreadService_1 = require("./services/ThreadService");
+var TeamMemberService_1 = require("./services/TeamMemberService");
+var ChannelMemberService_1 = require("./services/ChannelMemberService");
 var Base = /** @class */ (function () {
     /**
      * Create Base Client.
@@ -25,7 +30,12 @@ var Base = /** @class */ (function () {
      */
     Base.prototype.bootstrapServices = function () {
         this.userServiceObj = new UserService_1.default(this);
+        this.teamServiceObj = new TeamService_1.default(this);
         this.channelServiceObj = new ChannelService_1.default(this);
+        this.teamMemberServiceObj = new TeamMemberService_1.default(this);
+        this.channelMemberServiceObj = new ChannelMemberService_1.default(this);
+        this.messageServiceObj = new MessageService_1.default(this);
+        this.threadServiceObj = new ThreadService_1.default(this);
     };
     Base.prototype.getHttpClient = function () {
         return this.httpClient;
@@ -146,6 +156,46 @@ var Base = /** @class */ (function () {
      */
     Base.prototype.channelService = function () {
         return this.channelServiceObj;
+    };
+    /**
+     * Get Team Service object.
+     *
+     * @return {TeamService}
+     */
+    Base.prototype.teamService = function () {
+        return this.teamServiceObj;
+    };
+    /**
+     * Get Thread Service object.
+     *
+     * @return {ThreadService}
+     */
+    Base.prototype.threadService = function () {
+        return this.threadServiceObj;
+    };
+    /**
+     * Get Message Service object.
+     *
+     * @return {MessageService}
+     */
+    Base.prototype.messageService = function () {
+        return this.messageServiceObj;
+    };
+    /**
+     * Get ChannelMember Service object.
+     *
+     * @return {ChannelMemberService}
+     */
+    Base.prototype.channelMemberService = function () {
+        return this.channelMemberServiceObj;
+    };
+    /**
+     * Get TeamMember Service object.
+     *
+     * @return {TeamMemberService}
+     */
+    Base.prototype.teamMemberService = function () {
+        return this.teamMemberServiceObj;
     };
     return Base;
 }());

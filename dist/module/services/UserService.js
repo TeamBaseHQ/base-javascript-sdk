@@ -7,11 +7,11 @@ var UserService = /** @class */ (function () {
         //
     }
     UserService.makeUser = function (data) {
-        return (new User_1.default()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
+        return new User_1.default(data);
     };
     UserService.makeUserFromResponse = function (response) {
         var data = response.data ? response.data.data : {};
-        return (new User_1.default()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
+        return UserService.makeUser(data);
     };
     UserService.prototype.getUser = function (id) {
         return this.base.get("/users/" + id).then(function (response) {

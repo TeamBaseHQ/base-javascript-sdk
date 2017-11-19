@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel = /** @class */ (function () {
-    function BaseModel() {
-        this.id = 0;
-        this.created_at = null;
-        this.updated_at = null;
+    function BaseModel(data) {
+        this.id = data.id;
+        this.created_at = data.created_at;
+        this.updated_at = data.updated_at;
     }
     BaseModel.prototype.getId = function () {
         return this.id;
