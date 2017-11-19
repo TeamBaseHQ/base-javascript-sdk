@@ -1,9 +1,19 @@
 import HttpClientInterface from './http/HttpClientInterface';
 import BaseApp from './BaseApp';
 import AccessToken from './auth/AccessToken';
+import UserService from './services/UserService';
+import ChannelService from './services/ChannelService';
 export default class Base {
     baseApp: BaseApp;
     httpClient: HttpClientInterface;
+    /**
+     * User Service Object.
+     */
+    private userServiceObj;
+    /**
+     * Channel Service Object.
+     */
+    private channelServiceObj;
     /**
      * Create Base Client.
      *
@@ -11,6 +21,10 @@ export default class Base {
      * @param {HttpClientInterface} httpClient
      */
     constructor(baseApp: BaseApp, httpClient?: HttpClientInterface);
+    /**
+     * Bootstrap Services.
+     */
+    private bootstrapServices();
     getHttpClient(): HttpClientInterface;
     setHttpClient(value: HttpClientInterface): void;
     getApp(): BaseApp;
@@ -64,4 +78,16 @@ export default class Base {
     private addAuthHeaders();
     private buildUrl(endpoint);
     getUserAccessToken(email: string, password: string): Promise<AccessToken>;
+    /**
+     * Get User Service object.
+     *
+     * @return {UserService}
+     */
+    userService(): UserService;
+    /**
+     * Get Channel Service object.
+     *
+     * @return {ChannelService}
+     */
+    channelService(): ChannelService;
 }

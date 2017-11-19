@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = require("axios");
 var AccessToken_1 = require("./auth/AccessToken");
 var AxiosHttpClient_1 = require("./http/clients/AxiosHttpClient");
+var UserService_1 = require("./services/UserService");
+var ChannelService_1 = require("./services/ChannelService");
 var Base = /** @class */ (function () {
     /**
      * Create Base Client.
@@ -16,7 +18,15 @@ var Base = /** @class */ (function () {
         if (!httpClient) {
             this.httpClient = new AxiosHttpClient_1.default(axios_1.default.create());
         }
+        this.bootstrapServices();
     }
+    /**
+     * Bootstrap Services.
+     */
+    Base.prototype.bootstrapServices = function () {
+        this.userServiceObj = new UserService_1.default(this);
+        this.channelServiceObj = new ChannelService_1.default(this);
+    };
     Base.prototype.getHttpClient = function () {
         return this.httpClient;
     };
@@ -120,6 +130,22 @@ var Base = /** @class */ (function () {
             var data = response.data.data;
             return new AccessToken_1.default(data.access_token, data.expires_in, data.refresh_token);
         });
+    };
+    /**
+     * Get User Service object.
+     *
+     * @return {UserService}
+     */
+    Base.prototype.userService = function () {
+        return this.userServiceObj;
+    };
+    /**
+     * Get Channel Service object.
+     *
+     * @return {ChannelService}
+     */
+    Base.prototype.channelService = function () {
+        return this.channelServiceObj;
     };
     return Base;
 }());
