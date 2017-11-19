@@ -1,6 +1,6 @@
 {
   "name": "base-javascript-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Base's official SDK for JavaScript, written using TypeScript.",
   "main": "./dist/module/index.js",
   "types": "./dist/module/index.d.ts",
