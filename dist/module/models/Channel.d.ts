@@ -1,4 +1,5 @@
-export default class Channel {
+import BaseModel from './BaseModel';
+export default class Channel extends BaseModel {
     /**
      * Channel name
      */

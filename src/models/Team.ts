@@ -1,4 +1,6 @@
-export default class Team {
+import BaseModel from './BaseModel';
+
+export default class Team extends BaseModel {
   /**
    * Team name.
    */
@@ -130,6 +132,7 @@ export default class Team {
   }
 
   constructor() {
+    super();
     this.name = null;
     this.description = null;
     this.invitation_code = null;

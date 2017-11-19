@@ -1,4 +1,6 @@
-export default class User {
+import BaseModel from './BaseModel';
+
+export default class User extends BaseModel {
   /**
    * User name.
    */
@@ -42,6 +44,7 @@ export default class User {
   }
 
   constructor() {
+    super();
     this.name = null;
     this.email = null;
     this.is_verified = false;

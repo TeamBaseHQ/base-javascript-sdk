@@ -1,4 +1,6 @@
-export default class Channel {
+import BaseModel from './BaseModel';
+
+export default class Channel extends BaseModel {
   /**
    * Channel name
    */
@@ -173,6 +175,7 @@ export default class Channel {
   }
 
   constructor() {
+    super();
     this.name = null;
     this.description = null;
     this.color = null;

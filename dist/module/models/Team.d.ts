@@ -1,4 +1,5 @@
-export default class Team {
+import BaseModel from './BaseModel';
+export default class Team extends BaseModel {
     /**
      * Team name.
      */

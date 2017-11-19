@@ -1,5 +1,6 @@
 import User from './User';
-export default class Message {
+import BaseModel from './BaseModel';
+export default class Message extends BaseModel {
     /**
      * Message content
      */

@@ -1,46 +1,40 @@
 import User from './User';
+import BaseModel from './BaseModel';
 
-export default class Message {
+export default class Message extends BaseModel {
   /**
    * Message content
    */
-  /*private*/
   content: string;
 
   /**
    * Message type
    */
-  /*private*/
   type: string;
 
   /**
    * Message thread_id
    */
-  /*private*/
   thread_id: string;
 
   /**
    * Message sender_id
    */
-  /*private*/
   sender_id: string;
 
   /**
    * Message sender_type
    */
-  /*private*/
   sender_type: string;
 
   /**
    * Message slug
    */
-  /*private*/
   slug: string;
 
   /**
    * Message Sender
    */
-  /*private*/
   sender: User;
 
   /**
@@ -191,6 +185,7 @@ export default class Message {
   }
 
   constructor() {
+    super();
     this.content = null;
     this.type = null;
     this.thread_id = null;
