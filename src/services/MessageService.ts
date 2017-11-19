@@ -34,4 +34,23 @@ export default class MessageService {
         return MessageService.makeMessageFromResponse(response);
       });
   }
+
+  /**
+   * Create Message.
+   *
+   * @param {string} team
+   * @param channel
+   * @param thread
+   * @param {string} content
+   * @param {string} type
+   * @return {Message}
+   */
+  public createMessage(team: string, channel: string, thread: string,
+                       content: string, type?: string): Promise<Message> {
+    return this.base.post(`/teams/${team}/channels/${channel}/threads/${thread}`, {
+      content, type,
+    }).then((response) => {
+      return MessageService.makeMessageFromResponse(response);
+    });
+  }
 }
