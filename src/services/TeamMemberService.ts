@@ -52,4 +52,18 @@ export default class TeamMemberService {
         return true;
       });
   }
+
+  /**
+   * Remove Team Member.
+   *
+   * @param {string} slug
+   * @param {string} user_id
+   * @return {Promise<boolean>}
+   */
+  removeTeamMember(slug: string, user_id: string): Promise<boolean> {
+    return this.base.del(`/teams/${slug}/members/${user_id}`)
+      .then((response) => {
+        return true;
+      });
+  }
 }
