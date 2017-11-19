@@ -18,4 +18,17 @@ export default class ThreadService {
       .setSlug(data.slug)
       .setUser_id(data.user_id);
   }
+
+  /**
+   * Get Thread.
+   *
+   * @param {string} team
+   * @param {string} slug
+   * @return {Thread}
+   */
+  public getThread(team: string, channel: string, slug: string): Promise<Thread> {
+    return this.base.get(`/teams/${team}/channels/${channel}/threads/${slug}`).then((response) => {
+      return ThreadService.makeThreadFromResponse(response);
+    });
+  }
 }
