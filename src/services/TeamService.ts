@@ -39,7 +39,7 @@ export default class TeamService {
    * @return {Team}
    */
   public createTeam(name: string, description?: string): Promise<Team> {
-    return this.base.post(`/teams`).then((response) => {
+    return this.base.post(`/teams`, {name, description}).then((response) => {
       return TeamService.makeTeamFromResponse(response);
     });
   }
@@ -53,7 +53,7 @@ export default class TeamService {
    * @return {Team}
    */
   public updateTeam(slug: string, name?: string, description?: string): Promise<Team> {
-    return this.base.patch(`/teams/${slug}`).then((response) => {
+    return this.base.patch(`/teams/${slug}`, {name, description}).then((response) => {
       return TeamService.makeTeamFromResponse(response);
     });
   }
