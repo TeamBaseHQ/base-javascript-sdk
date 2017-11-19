@@ -9,6 +9,16 @@ import ChannelService from './services/ChannelService';
 export default class Base {
 
   /**
+   * User Service Object.
+   */
+  private userServiceObj: UserService;
+
+  /**
+   * Channel Service Object.
+   */
+  private channelServiceObj: ChannelService;
+
+  /**
    * Create Base Client.
    *
    * @param {BaseApp} baseApp
@@ -26,8 +36,8 @@ export default class Base {
    * Bootstrap Services.
    */
   private bootstrapServices(): void {
-    this.userService = new UserService(this);
-    this.channelService = new ChannelService(this);
+    this.userServiceObj = new UserService(this);
+    this.channelServiceObj = new ChannelService(this);
   }
 
   public getHttpClient(): HttpClientInterface {
@@ -142,5 +152,23 @@ export default class Base {
       const data = response.data.data;
       return new AccessToken(data.access_token, data.expires_in, data.refresh_token);
     });
+  }
+
+  /**
+   * Get User Service object.
+   *
+   * @return {UserService}
+   */
+  public userService(): UserService {
+    return this.userServiceObj;
+  }
+
+  /**
+   * Get Channel Service object.
+   *
+   * @return {ChannelService}
+   */
+  public channelService(): ChannelService {
+    return this.channelServiceObj;
   }
 }
