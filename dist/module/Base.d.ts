@@ -6,6 +6,8 @@ import ChannelService from './services/ChannelService';
 import TeamService from './services/TeamService';
 import MessageService from './services/MessageService';
 import ThreadService from './services/ThreadService';
+import TeamMemberService from './services/TeamMemberService';
+import ChannelMemberService from './services/ChannelMemberService';
 export default class Base {
     baseApp: BaseApp;
     httpClient: HttpClientInterface;
@@ -21,6 +23,14 @@ export default class Base {
      * Channel Service Object.
      */
     private channelServiceObj;
+    /**
+     * TeamMember Service Object.
+     */
+    private teamMemberServiceObj;
+    /**
+     * ChannelMember Service Object.
+     */
+    private channelMemberServiceObj;
     /**
      * Thread Service Object.
      */
@@ -123,4 +133,16 @@ export default class Base {
      * @return {MessageService}
      */
     messageService(): MessageService;
+    /**
+     * Get ChannelMember Service object.
+     *
+     * @return {ChannelMemberService}
+     */
+    channelMemberService(): ChannelMemberService;
+    /**
+     * Get TeamMember Service object.
+     *
+     * @return {TeamMemberService}
+     */
+    teamMemberService(): TeamMemberService;
 }

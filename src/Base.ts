@@ -8,6 +8,8 @@ import ChannelService from './services/ChannelService';
 import TeamService from './services/TeamService';
 import MessageService from './services/MessageService';
 import ThreadService from './services/ThreadService';
+import TeamMemberService from './services/TeamMemberService';
+import ChannelMemberService from './services/ChannelMemberService';
 
 export default class Base {
 
@@ -25,6 +27,16 @@ export default class Base {
    * Channel Service Object.
    */
   private channelServiceObj: ChannelService;
+
+  /**
+   * TeamMember Service Object.
+   */
+  private teamMemberServiceObj: TeamMemberService;
+
+  /**
+   * ChannelMember Service Object.
+   */
+  private channelMemberServiceObj: ChannelMemberService;
 
   /**
    * Thread Service Object.
@@ -57,7 +69,10 @@ export default class Base {
     this.userServiceObj = new UserService(this);
     this.teamServiceObj = new TeamService(this);
     this.channelServiceObj = new ChannelService(this);
+    this.teamMemberServiceObj = new TeamMemberService(this);
+    this.channelMemberServiceObj = new ChannelMemberService(this);
     this.messageServiceObj = new MessageService(this);
+    this.threadServiceObj = new ThreadService(this);
   }
 
   public getHttpClient(): HttpClientInterface {
@@ -217,5 +232,23 @@ export default class Base {
    */
   public messageService(): MessageService {
     return this.messageServiceObj;
+  }
+
+  /**
+   * Get ChannelMember Service object.
+   *
+   * @return {ChannelMemberService}
+   */
+  public channelMemberService(): ChannelMemberService {
+    return this.channelMemberServiceObj;
+  }
+
+  /**
+   * Get TeamMember Service object.
+   *
+   * @return {TeamMemberService}
+   */
+  public teamMemberService(): TeamMemberService {
+    return this.teamMemberServiceObj;
   }
 }
