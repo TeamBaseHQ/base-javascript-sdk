@@ -38,4 +38,19 @@ export default class ChannelMemberService {
         return new BaseCollection<User>(response.data, User);
       });
   }
+
+  /**
+   * Add Team Member.
+   *
+   * @param team
+   * @param {string} slug
+   * @param {string} user_id
+   * @return {Promise<boolean>}
+   */
+  addChannelMember(team: string, slug: string, user_id: string): Promise<boolean> {
+    return this.base.post(`/teams/${team}/channels/${slug}/members/`, {user_id})
+      .then((response) => {
+        return true;
+      });
+  }
 }
