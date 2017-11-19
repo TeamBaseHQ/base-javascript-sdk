@@ -16,7 +16,10 @@ export default class MessageService {
     message.setType(data.type)
       .setContent(data.content)
       .setSlug(data.slug)
-      .setSender(data.sender);
+      .setSender(data.sender)
+      .setId(data.id)
+      .setCreated_at(data.created_at)
+      .setUpdated_at(data.updated_at);
 
     return message;
   }

@@ -12,11 +12,17 @@ export default class ThreadService {
   }
 
   static makeThread(data: any): Thread {
-    return (new Thread())
-      .setSubject(data.subject)
+    const thread = new Thread();
+
+    thread.setSubject(data.subject)
       .setDescription(data.description)
       .setSlug(data.slug)
-      .setUser_id(data.user_id);
+      .setUser_id(data.user_id)
+      .setId(data.id)
+      .setCreated_at(data.created_at)
+      .setUpdated_at(data.updated_at);
+
+    return thread;
   }
 
   /**

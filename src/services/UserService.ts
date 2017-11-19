@@ -7,12 +7,20 @@ export default class UserService {
   }
 
   static makeUser(data: any): User {
-    return (new User()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
+    const user = new User();
+    user.setName(data.name)
+      .setEmail(data.email)
+      .setIsVerified(data.is_verified)
+      .setId(data.id)
+      .setCreated_at(data.created_at)
+      .setUpdated_at(data.updated_at);
+
+    return user;
   }
 
   static makeUserFromResponse(response: any): User {
     const data = response.data ? response.data.data : {};
-    return (new User()).setName(data.name).setEmail(data.email).setIsVerified(data.is_verified);
+    return this.makeUser(data);
   }
 
   public getUser(id: string): Promise<User> {
