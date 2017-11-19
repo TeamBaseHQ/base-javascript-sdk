@@ -22,11 +22,12 @@ export default class ChannelService {
   /**
    * Get Channel.
    *
+   * @param team
    * @param {string} slug
    * @return {Channel}
    */
-  public getChannel(slug: string): Promise<Channel> {
-    return this.base.get(`/channels/${slug}`).then((response) => {
+  public getChannel(team: string, slug: string): Promise<Channel> {
+    return this.base.get(`/teams/${team}/channels/${slug}`).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
@@ -34,12 +35,13 @@ export default class ChannelService {
   /**
    * Create Channel.
    *
+   * @param team
    * @param {string} name
    * @param {string} description
    * @return {Channel}
    */
-  public createChannel(name: string, description?: string): Promise<Channel> {
-    return this.base.post(`/channels`).then((response) => {
+  public createChannel(team: string, name: string, description?: string): Promise<Channel> {
+    return this.base.post(`/teams/${team}/channels`).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
@@ -47,13 +49,15 @@ export default class ChannelService {
   /**
    * Update Channel.
    *
+   * @param team
    * @param {string} slug
    * @param {string} name
    * @param {string} description
    * @return {Channel}
    */
-  public updateChannel(slug: string, name?: string, description?: string): Promise<Channel> {
-    return this.base.patch(`/channels/${slug}`).then((response) => {
+  public updateChannel(team: string, slug: string, name?: string,
+                       description?: string): Promise<Channel> {
+    return this.base.patch(`/teams/${team}/channels/${slug}`).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
@@ -61,12 +65,13 @@ export default class ChannelService {
   /**
    * List of Channels. Paginated.
    *
+   * @param team
    * @param {string} page
    * @param {string} limit
    * @return {Promise<Channel>}
    */
-  public getAllChannels(page: string = '1', limit?: string): Promise<Channel> {
-    return this.base.get(`/channels`, {page, limit}).then((response) => {
+  public getAllChannels(team: string, page: string = '1', limit?: string): Promise<Channel> {
+    return this.base.get(`/teams/${team}/channels`, {page, limit}).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }

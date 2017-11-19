@@ -20,49 +20,53 @@ var ChannelService = /** @class */ (function () {
     /**
      * Get Channel.
      *
+     * @param team
      * @param {string} slug
      * @return {Channel}
      */
-    ChannelService.prototype.getChannel = function (slug) {
-        return this.base.get("/channels/" + slug).then(function (response) {
+    ChannelService.prototype.getChannel = function (team, slug) {
+        return this.base.get("/teams/" + team + "/channels/" + slug).then(function (response) {
             return ChannelService.makeChannelFromResponse(response);
         });
     };
     /**
      * Create Channel.
      *
+     * @param team
      * @param {string} name
      * @param {string} description
      * @return {Channel}
      */
-    ChannelService.prototype.createChannel = function (name, description) {
-        return this.base.post("/channels").then(function (response) {
+    ChannelService.prototype.createChannel = function (team, name, description) {
+        return this.base.post("/teams/" + team + "/channels").then(function (response) {
             return ChannelService.makeChannelFromResponse(response);
         });
     };
     /**
      * Update Channel.
      *
+     * @param team
      * @param {string} slug
      * @param {string} name
      * @param {string} description
      * @return {Channel}
      */
-    ChannelService.prototype.updateChannel = function (slug, name, description) {
-        return this.base.patch("/channels/" + slug).then(function (response) {
+    ChannelService.prototype.updateChannel = function (team, slug, name, description) {
+        return this.base.patch("/teams/" + team + "/channels/" + slug).then(function (response) {
             return ChannelService.makeChannelFromResponse(response);
         });
     };
     /**
      * List of Channels. Paginated.
      *
+     * @param team
      * @param {string} page
      * @param {string} limit
      * @return {Promise<Channel>}
      */
-    ChannelService.prototype.getAllChannels = function (page, limit) {
+    ChannelService.prototype.getAllChannels = function (team, page, limit) {
         if (page === void 0) { page = '1'; }
-        return this.base.get("/channels", { page: page, limit: limit }).then(function (response) {
+        return this.base.get("/teams/" + team + "/channels", { page: page, limit: limit }).then(function (response) {
             return ChannelService.makeChannelFromResponse(response);
         });
     };
