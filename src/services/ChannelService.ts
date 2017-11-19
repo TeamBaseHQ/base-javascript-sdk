@@ -12,17 +12,7 @@ export default class ChannelService {
   }
 
   static makeChannel(data: any): Channel {
-    const channel = new Channel();
-
-    channel.setName(data.name)
-      .setDescription(data.description)
-      .setSlug(data.slug)
-      .setUser_id(data.user_id)
-      .setId(data.id)
-      .setCreated_at(data.created_at)
-      .setUpdated_at(data.updated_at);
-
-    return channel;
+    return new Channel(data);
   }
 
   /**

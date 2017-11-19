@@ -12,17 +12,7 @@ export default class TeamService {
   }
 
   static makeTeam(data: any): Team {
-    const team = new Team();
-
-    team.setName(data.name)
-      .setDescription(data.description)
-      .setSlug(data.slug)
-      .setUser_id(data.user_id)
-      .setId(data.id)
-      .setCreated_at(data.created_at)
-      .setUpdated_at(data.updated_at);
-
-    return team;
+    return new Team(data);
   }
 
   /**
