@@ -41,7 +41,7 @@ export default class ChannelService {
    * @return {Channel}
    */
   public createChannel(team: string, name: string, description?: string): Promise<Channel> {
-    return this.base.post(`/teams/${team}/channels`).then((response) => {
+    return this.base.post(`/teams/${team}/channels`, {name, description}).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
@@ -57,7 +57,7 @@ export default class ChannelService {
    */
   public updateChannel(team: string, slug: string, name?: string,
                        description?: string): Promise<Channel> {
-    return this.base.patch(`/teams/${team}/channels/${slug}`).then((response) => {
+    return this.base.patch(`/teams/${team}/channels/${slug}`, {name, description}).then((response) => {
       return ChannelService.makeChannelFromResponse(response);
     });
   }
