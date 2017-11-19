@@ -27,13 +27,17 @@ export default class TeamMemberService {
    * Get All Team Members.
    *
    * @param {string} slug
+   * @param page
+   * @param limit
    * @return {Promise<BaseCollection<User>>}
    */
-  getAllTeamMembers(slug: string): Promise<BaseCollection<User>> {
-    return this.base.get(`/teams/${slug}/members`)
+  getAllTeamMembers(slug: string,
+                    page: string = '1', limit?: string): Promise<BaseCollection<User>> {
+    return this.base.get(`/teams/${slug}/members`, {page, limit})
       .then((response) => {
         return new BaseCollection<User>(response.data, User);
       });
   }
+
 
 }
