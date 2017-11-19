@@ -12,11 +12,13 @@ export default class MessageService {
   }
 
   static makeMessage(data: any): Message {
-    return (new Message())
-      .setType(data.type)
+    const message = new Message();
+    message.setType(data.type)
       .setContent(data.content)
       .setSlug(data.slug)
-      .setUser_id(data.user_id);
+      .setSender(data.sender);
+
+    return message;
   }
 
   /**

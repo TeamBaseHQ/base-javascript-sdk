@@ -5,6 +5,7 @@ import UserService from './services/UserService';
 import ChannelService from './services/ChannelService';
 import TeamService from './services/TeamService';
 import MessageService from './services/MessageService';
+import ThreadService from './services/ThreadService';
 export default class Base {
     baseApp: BaseApp;
     httpClient: HttpClientInterface;
@@ -110,6 +111,12 @@ export default class Base {
      * @return {TeamService}
      */
     teamService(): TeamService;
+    /**
+     * Get Thread Service object.
+     *
+     * @return {ThreadService}
+     */
+    threadService(): ThreadService;
     /**
      * Get Message Service object.
      *
