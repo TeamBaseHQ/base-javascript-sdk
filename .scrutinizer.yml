@@ -1,0 +1,12 @@
+filter:
+    excluded_paths:
+        - 'dist/*'
+        - 'docs/*'
+checks:
+    javascript: true
+build:
+    nodes:
+        analysis:
+            environment:
+                node:
+                    version: 6.0.0
