@@ -17,5 +17,20 @@
   "exclude": [
     "node_modules",
     "dist"
-  ]
+  ],
+  "typedocOptions": {
+    "name": "Base JavaScript SDK",
+    "mode": "modules",
+    "out": "./docs",
+    "exclude": "**/node_modules/**/*.*",
+    "module": "commonjs",
+    "target": "es5",
+    "theme": "default",
+    "excludeExternals": true,
+    "hideGenerator": true,
+    "includeDeclarations": false,
+    "excludeNotExported": true,
+    "ignoreCompileErrors": true,
+    "gaID": "UA-109911756-2"
+  }
 }
