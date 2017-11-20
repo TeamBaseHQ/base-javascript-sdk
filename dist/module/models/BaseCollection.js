@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BaseCollection = /** @class */ (function () {
     function BaseCollection(responseData, type) {
         var data = responseData.data ? responseData.data : {};
-        var collectionData = data.data.map(function (itemData) {
+        var collectionData = data.map(function (itemData) {
             return BaseCollection.factory(type, itemData);
         });
         this.setData(collectionData)
-            .setLinks(data.links)
-            .setMeta(data.meta);
+            .setLinks(responseData.links)
+            .setMeta(responseData.meta);
     }
     /**
      * Set data.
