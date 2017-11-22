@@ -1,6 +1,7 @@
 import Channel from '../models/Channel';
 import Base from '../Base';
 import BaseCollection from '../models/BaseCollection';
+import Media from '../models/Media';
 
 export default class ChannelService {
   constructor(public base: Base) {
@@ -100,6 +101,17 @@ export default class ChannelService {
   public deleteChannel(team: string, slug: string): Promise<boolean> {
     return this.base.del(`/channels/${slug}`).then((response) => {
       return true;
+    });
+  }
+
+  public uploadMedia(team: string, slug: string, files: File[]): Promise<Media[]> {
+    return this.base.post(`/channels/${slug}/media`).then((response) => {
+      const data = response.data ? response.data.data : [];
+
+      return data.map((mediaData: any) => {
+        return new Media(mediaData);
+      });
+
     });
   }
 }

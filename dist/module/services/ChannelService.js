@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Channel_1 = require("../models/Channel");
 var BaseCollection_1 = require("../models/BaseCollection");
+var Media_1 = require("../models/Media");
 var ChannelService = /** @class */ (function () {
     function ChannelService(base) {
         this.base = base;
@@ -93,6 +94,14 @@ var ChannelService = /** @class */ (function () {
     ChannelService.prototype.deleteChannel = function (team, slug) {
         return this.base.del("/channels/" + slug).then(function (response) {
             return true;
+        });
+    };
+    ChannelService.prototype.uploadMedia = function (team, slug, files) {
+        return this.base.post("/channels/" + slug + "/media").then(function (response) {
+            var data = response.data ? response.data.data : [];
+            return data.map(function (mediaData) {
+                return new Media_1.default(mediaData);
+            });
         });
     };
     return ChannelService;

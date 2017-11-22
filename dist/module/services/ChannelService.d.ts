@@ -1,6 +1,7 @@
 import Channel from '../models/Channel';
 import Base from '../Base';
 import BaseCollection from '../models/BaseCollection';
+import Media from '../models/Media';
 export default class ChannelService {
     base: Base;
     constructor(base: Base);
@@ -55,4 +56,5 @@ export default class ChannelService {
      * @return {Channel}
      */
     deleteChannel(team: string, slug: string): Promise<boolean>;
+    uploadMedia(team: string, slug: string, files: File[]): Promise<Media[]>;
 }
