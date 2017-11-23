@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import Media from './Media';
 
 export default class User extends BaseModel {
   /**
@@ -15,6 +16,11 @@ export default class User extends BaseModel {
    * Is Verified
    */
   is_verified: boolean;
+
+  /**
+   * Profile Picture
+   */
+  picture: Media;
 
   public getName(): string {
     return this.name;
@@ -43,10 +49,20 @@ export default class User extends BaseModel {
     return this;
   }
 
+  public getPicture(): object {
+    return this.picture;
+  }
+
+  public setPicture(pic: Media): object {
+    this.picture = pic;
+    return this;
+  }
+
   constructor(data: any) {
     super(data);
     this.name = data.name;
     this.email = data.email;
     this.is_verified = data.is_verified;
+    this.picture = data.picture;
   }
 }

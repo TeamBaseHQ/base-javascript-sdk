@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import Media from './Media';
 export default class User extends BaseModel {
     /**
      * User name.
@@ -12,11 +13,17 @@ export default class User extends BaseModel {
      * Is Verified
      */
     is_verified: boolean;
+    /**
+     * Profile Picture
+     */
+    picture: Media;
     getName(): string;
     setName(name: string): User;
     getEmail(): string;
     setEmail(email: string): User;
     isVerified(): boolean;
     setIsVerified(is_verified: boolean): User;
+    getPicture(): object;
+    setPicture(pic: Media): object;
     constructor(data: any);
 }
