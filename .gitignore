@@ -4,3 +4,5 @@ node_modules/
 tests/
 typings.json
 npm-debug.log
+docs/.nojekyll
+docs/CNAME
