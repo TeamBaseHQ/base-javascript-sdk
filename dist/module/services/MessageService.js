@@ -78,7 +78,7 @@ var MessageService = /** @class */ (function () {
      */
     MessageService.prototype.getAllMessages = function (team, channel, thread, page, limit) {
         if (page === void 0) { page = '1'; }
-        return this.base.get("/teams/" + team + "/channels/" + channel + "/threads/" + thread, {
+        return this.base.get("/teams/" + team + "/channels/" + channel + "/threads/" + thread + "/messages", {
             page: page, limit: limit,
         }).then(function (response) { return MessageService.makeCollectionFromResponse(response); });
     };

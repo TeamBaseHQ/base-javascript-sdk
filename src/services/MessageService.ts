@@ -87,7 +87,7 @@ export default class MessageService {
    */
   public getAllMessages(team: string, channel: string, thread: string,
                         page: string = '1', limit?: string): Promise<BaseCollection<Message>> {
-    return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}`, {
+    return this.base.get(`/teams/${team}/channels/${channel}/threads/${thread}/messages`, {
       page, limit,
     }).then(response => MessageService.makeCollectionFromResponse(response));
   }
