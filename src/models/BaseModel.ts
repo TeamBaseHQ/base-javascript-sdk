@@ -15,9 +15,11 @@ export default class BaseModel {
   updated_at: string;
 
   constructor(data: any) {
-    this.id = data.id;
-    this.created_at = data.created_at;
-    this.updated_at = data.updated_at;
+    if (data) {
+      this.id = data.id;
+      this.created_at = data.created_at;
+      this.updated_at = data.updated_at;
+    }
   }
 
   public getId(): number {

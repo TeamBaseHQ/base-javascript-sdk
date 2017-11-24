@@ -223,15 +223,17 @@ export default class Channel extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.name = data.name;
-    this.description = data.description;
-    this.color = data.color;
-    this.type = data.type;
-    this.user_id = data.user_id;
-    this.team_id = data.team_id;
-    this.owner = new User(data.owner);
-    this.team = new Team(data.team);
-    this.slug = data.slug;
+    if (data) {
+      super(data);
+      this.name = data.name;
+      this.description = data.description;
+      this.color = data.color;
+      this.type = data.type;
+      this.user_id = data.user_id;
+      this.team_id = data.team_id;
+      this.owner = new User(data.owner);
+      this.team = new Team(data.team);
+      this.slug = data.slug;
+    }
   }
 }

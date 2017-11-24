@@ -6,15 +6,17 @@ export default class BaseCollection<T> {
   meta: object;
 
   constructor(responseData: any, type: { new (tData: any): T }) {
-    const data = responseData.data ? responseData.data : {};
+    const data = responseData.data ? responseData.data : false;
 
-    const collectionData = data.map((itemData: any) => {
-      return BaseCollection.factory(type, itemData);
-    });
+    if (data) {
+      const collectionData = data.map((itemData: any) => {
+        return BaseCollection.factory(type, itemData);
+      });
 
-    this.setData(collectionData)
-      .setLinks(responseData.links)
-      .setMeta(responseData.meta);
+      this.setData(collectionData)
+        .setLinks(responseData.links)
+        .setMeta(responseData.meta);
+    }
   }
 
   /**

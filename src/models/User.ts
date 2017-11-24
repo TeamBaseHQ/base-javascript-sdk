@@ -59,10 +59,14 @@ export default class User extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.name = data.name;
-    this.email = data.email;
-    this.is_verified = data.is_verified;
-    this.picture = new Media(data.picture);
+    if (data) {
+      super(data);
+      this.name = data.name;
+      this.email = data.email;
+      this.is_verified = data.is_verified;
+      if (data.picture) {
+        this.picture = new Media(data.picture);
+      }
+    }
   }
 }

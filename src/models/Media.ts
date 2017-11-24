@@ -87,14 +87,16 @@ export default class Media extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.collection_name = data.collection_name;
-    this.name = data.name;
-    this.file_name = data.file_name;
-    this.mime_type = data.mime_type;
-    this.size = data.size;
-    this.manipulations = data.manipulations;
-    this.custom_properties = data.custom_properties;
-    this.url = data.url;
+    if (data) {
+      super(data);
+      this.collection_name = data.collection_name;
+      this.name = data.name;
+      this.file_name = data.file_name;
+      this.mime_type = data.mime_type;
+      this.size = data.size;
+      this.manipulations = data.manipulations;
+      this.custom_properties = data.custom_properties;
+      this.url = data.url;
+    }
   }
 }

@@ -165,13 +165,19 @@ export default class Thread extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.subject = data.subject;
-    this.description = data.description;
-    this.user_id = data.user_id;
-    this.channel_id = data.channel_id;
-    this.slug = data.slug;
-    this.owner = new User(data.owner);
-    this.channel = new Channel(data.channel);
+    if (data) {
+      super(data);
+      this.subject = data.subject;
+      this.description = data.description;
+      this.user_id = data.user_id;
+      this.channel_id = data.channel_id;
+      this.slug = data.slug;
+      if (data.owner) {
+        this.owner = new User(data.owner);
+      }
+      if (data.channel) {
+        this.channel = new Channel(data.channel);
+      }
+    }
   }
 }

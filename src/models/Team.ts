@@ -171,13 +171,15 @@ export default class Team extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.name = data.name;
-    this.description = data.description;
-    this.invitation_code = data.invitation_code;
-    this.user_id = data.user_id;
-    this.owner = data.owner;
-    this.slug = data.slug;
-    this.picture = new Media(data.picture);
+    if (data) {
+      super(data);
+      this.name = data.name;
+      this.description = data.description;
+      this.invitation_code = data.invitation_code;
+      this.user_id = data.user_id;
+      this.owner = data.owner;
+      this.slug = data.slug;
+      this.picture = new Media(data.picture);
+    }
   }
 }

@@ -215,20 +215,22 @@ export default class Message extends BaseModel {
   }
 
   constructor(data: any) {
-    super(data);
-    this.content = data.content;
-    this.type = data.type;
-    this.thread_id = data.thread_id;
-    this.sender_id = data.sender_id;
-    this.sender_type = data.sender_type;
-    this.slug = data.slug;
-    this.sender = new User(data.sender);
-    this.thread = new Thread(data.thread);
+    if (data) {
+      super(data);
+      this.content = data.content;
+      this.type = data.type;
+      this.thread_id = data.thread_id;
+      this.sender_id = data.sender_id;
+      this.sender_type = data.sender_type;
+      this.slug = data.slug;
+      this.sender = new User(data.sender);
+      this.thread = new Thread(data.thread);
 
-    if (data.attachments && data.attachments.length > 0) {
-      this.attachments = data.attachments.map((attachment: any) => {
-        return new Media(attachment);
-      });
+      if (data.attachments && data.attachments.length > 0) {
+        this.attachments = data.attachments.map((attachment: any) => {
+          return new Media(attachment);
+        });
+      }
     }
   }
 }
