@@ -16,14 +16,21 @@ var Channel_1 = require("./Channel");
 var Thread = /** @class */ (function (_super) {
     __extends(Thread, _super);
     function Thread(data) {
-        var _this = _super.call(this, data) || this;
-        _this.subject = data.subject;
-        _this.description = data.description;
-        _this.user_id = data.user_id;
-        _this.channel_id = data.channel_id;
-        _this.slug = data.slug;
-        _this.owner = new User_1.default(data.owner);
-        _this.channel = new Channel_1.default(data.channel);
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.subject = data.subject;
+            _this.description = data.description;
+            _this.user_id = data.user_id;
+            _this.channel_id = data.channel_id;
+            _this.slug = data.slug;
+            if (data.owner) {
+                _this.owner = new User_1.default(data.owner);
+            }
+            if (data.channel) {
+                _this.channel = new Channel_1.default(data.channel);
+            }
+        }
         return _this;
     }
     /**

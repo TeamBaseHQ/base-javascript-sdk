@@ -16,16 +16,19 @@ var Team_1 = require("./Team");
 var Channel = /** @class */ (function (_super) {
     __extends(Channel, _super);
     function Channel(data) {
-        var _this = _super.call(this, data) || this;
-        _this.name = data.name;
-        _this.description = data.description;
-        _this.color = data.color;
-        _this.type = data.type;
-        _this.user_id = data.user_id;
-        _this.team_id = data.team_id;
-        _this.owner = new User_1.default(data.owner);
-        _this.team = new Team_1.default(data.team);
-        _this.slug = data.slug;
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.name = data.name;
+            _this.description = data.description;
+            _this.color = data.color;
+            _this.type = data.type;
+            _this.user_id = data.user_id;
+            _this.team_id = data.team_id;
+            _this.owner = new User_1.default(data.owner);
+            _this.team = new Team_1.default(data.team);
+            _this.slug = data.slug;
+        }
         return _this;
     }
     /**

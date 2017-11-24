@@ -15,14 +15,17 @@ var Media_1 = require("./Media");
 var Team = /** @class */ (function (_super) {
     __extends(Team, _super);
     function Team(data) {
-        var _this = _super.call(this, data) || this;
-        _this.name = data.name;
-        _this.description = data.description;
-        _this.invitation_code = data.invitation_code;
-        _this.user_id = data.user_id;
-        _this.owner = data.owner;
-        _this.slug = data.slug;
-        _this.picture = new Media_1.default(data.picture);
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.name = data.name;
+            _this.description = data.description;
+            _this.invitation_code = data.invitation_code;
+            _this.user_id = data.user_id;
+            _this.owner = data.owner;
+            _this.slug = data.slug;
+            _this.picture = new Media_1.default(data.picture);
+        }
         return _this;
     }
     /**

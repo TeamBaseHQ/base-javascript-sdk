@@ -2,13 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseCollection = /** @class */ (function () {
     function BaseCollection(responseData, type) {
-        var data = responseData.data ? responseData.data : {};
-        var collectionData = data.map(function (itemData) {
-            return BaseCollection.factory(type, itemData);
-        });
-        this.setData(collectionData)
-            .setLinks(responseData.links)
-            .setMeta(responseData.meta);
+        var data = responseData.data ? responseData.data : false;
+        if (data) {
+            var collectionData = data.map(function (itemData) {
+                return BaseCollection.factory(type, itemData);
+            });
+            this.setData(collectionData)
+                .setLinks(responseData.links)
+                .setMeta(responseData.meta);
+        }
     }
     /**
      * Set data.

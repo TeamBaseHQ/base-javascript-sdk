@@ -2,9 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel = /** @class */ (function () {
     function BaseModel(data) {
-        this.id = data.id;
-        this.created_at = data.created_at;
-        this.updated_at = data.updated_at;
+        if (data) {
+            this.id = data.id;
+            this.created_at = data.created_at;
+            this.updated_at = data.updated_at;
+        }
     }
     BaseModel.prototype.getId = function () {
         return this.id;

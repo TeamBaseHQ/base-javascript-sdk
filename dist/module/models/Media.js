@@ -14,15 +14,18 @@ var BaseModel_1 = require("./BaseModel");
 var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
     function Media(data) {
-        var _this = _super.call(this, data) || this;
-        _this.collection_name = data.collection_name;
-        _this.name = data.name;
-        _this.file_name = data.file_name;
-        _this.mime_type = data.mime_type;
-        _this.size = data.size;
-        _this.manipulations = data.manipulations;
-        _this.custom_properties = data.custom_properties;
-        _this.url = data.url;
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.collection_name = data.collection_name;
+            _this.name = data.name;
+            _this.file_name = data.file_name;
+            _this.mime_type = data.mime_type;
+            _this.size = data.size;
+            _this.manipulations = data.manipulations;
+            _this.custom_properties = data.custom_properties;
+            _this.url = data.url;
+        }
         return _this;
     }
     Media.prototype.getCollection_name = function () {

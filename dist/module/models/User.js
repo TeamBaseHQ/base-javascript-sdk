@@ -15,11 +15,16 @@ var Media_1 = require("./Media");
 var User = /** @class */ (function (_super) {
     __extends(User, _super);
     function User(data) {
-        var _this = _super.call(this, data) || this;
-        _this.name = data.name;
-        _this.email = data.email;
-        _this.is_verified = data.is_verified;
-        _this.picture = new Media_1.default(data.picture);
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.name = data.name;
+            _this.email = data.email;
+            _this.is_verified = data.is_verified;
+            if (data.picture) {
+                _this.picture = new Media_1.default(data.picture);
+            }
+        }
         return _this;
     }
     User.prototype.getName = function () {

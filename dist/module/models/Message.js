@@ -17,19 +17,22 @@ var Media_1 = require("./Media");
 var Message = /** @class */ (function (_super) {
     __extends(Message, _super);
     function Message(data) {
-        var _this = _super.call(this, data) || this;
-        _this.content = data.content;
-        _this.type = data.type;
-        _this.thread_id = data.thread_id;
-        _this.sender_id = data.sender_id;
-        _this.sender_type = data.sender_type;
-        _this.slug = data.slug;
-        _this.sender = new User_1.default(data.sender);
-        _this.thread = new Thread_1.default(data.thread);
-        if (data.attachments && data.attachments.length > 0) {
-            _this.attachments = data.attachments.map(function (attachment) {
-                return new Media_1.default(attachment);
-            });
+        var _this = this;
+        if (data) {
+            _this = _super.call(this, data) || this;
+            _this.content = data.content;
+            _this.type = data.type;
+            _this.thread_id = data.thread_id;
+            _this.sender_id = data.sender_id;
+            _this.sender_type = data.sender_type;
+            _this.slug = data.slug;
+            _this.sender = new User_1.default(data.sender);
+            _this.thread = new Thread_1.default(data.thread);
+            if (data.attachments && data.attachments.length > 0) {
+                _this.attachments = data.attachments.map(function (attachment) {
+                    return new Media_1.default(attachment);
+                });
+            }
         }
         return _this;
     }
