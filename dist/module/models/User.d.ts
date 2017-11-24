@@ -23,7 +23,7 @@ export default class User extends BaseModel {
     setEmail(email: string): User;
     isVerified(): boolean;
     setIsVerified(is_verified: boolean): User;
-    getPicture(): object;
+    getPicture(): Media;
     setPicture(pic: Media): User;
     constructor(data: any);
 }

@@ -67,7 +67,10 @@ var Media = /** @class */ (function (_super) {
     Media.prototype.setCustom_properties = function (value) {
         this.custom_properties = value;
     };
-    Media.prototype.getUrl = function () {
+    Media.prototype.getUrl = function (size) {
+        if (size) {
+            return this.url[size];
+        }
         return this.url;
     };
     Media.prototype.setUrl = function (value) {

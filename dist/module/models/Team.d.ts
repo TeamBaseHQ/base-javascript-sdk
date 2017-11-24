@@ -112,7 +112,7 @@ export default class Team extends BaseModel {
      * @return {Team}
      */
     setSlug(slug: string): Team;
-    getPicture(): object;
+    getPicture(): Media;
     setPicture(pic: Media): Team;
     constructor(data: any);
 }

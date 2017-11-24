@@ -22,7 +22,7 @@ export default class Media extends BaseModel {
     setManipulations(value: any): void;
     getCustom_properties(): any;
     setCustom_properties(value: any): void;
-    getUrl(): Object;
+    getUrl(size?: string): Object;
     setUrl(value: Object): void;
     constructor(data: any);
 }

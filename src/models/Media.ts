@@ -75,7 +75,10 @@ export default class Media extends BaseModel {
     this.custom_properties = value;
   }
 
-  getUrl(): Object {
+  getUrl(size?: string): Object {
+    if (size) {
+      return this.url[size];
+    }
     return this.url;
   }
 

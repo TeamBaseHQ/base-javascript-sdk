@@ -49,7 +49,7 @@ export default class User extends BaseModel {
     return this;
   }
 
-  public getPicture(): object {
+  public getPicture(): Media {
     return this.picture;
   }
 
