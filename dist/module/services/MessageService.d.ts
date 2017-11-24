@@ -25,9 +25,10 @@ export default class MessageService {
      * @param thread
      * @param {string} content
      * @param {string} type
+     * @param mediaIds
      * @return {Message}
      */
-    createMessage(team: string, channel: string, thread: string, content: string, type?: string): Promise<Message>;
+    createMessage(team: string, channel: string, thread: string, content: string, type?: string, mediaIds?: any[]): Promise<Message>;
     /**
      * Update Message.
      *

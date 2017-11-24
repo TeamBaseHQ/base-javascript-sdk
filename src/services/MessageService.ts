@@ -45,12 +45,14 @@ export default class MessageService {
    * @param thread
    * @param {string} content
    * @param {string} type
+   * @param mediaIds
    * @return {Message}
    */
   public createMessage(team: string, channel: string, thread: string,
-                       content: string, type?: string): Promise<Message> {
+                       content: string, type?: string, mediaIds?: any[]): Promise<Message> {
     return this.base.post(`/teams/${team}/channels/${channel}/threads/${thread}`, {
       content, type,
+      media_ids: mediaIds,
     }).then(response => MessageService.makeMessageFromResponse(response));
   }
 
