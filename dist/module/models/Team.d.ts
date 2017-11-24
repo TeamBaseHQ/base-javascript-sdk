@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import User from './User';
+import Media from './Media';
 export default class Team extends BaseModel {
     /**
      * Team name.
@@ -25,6 +26,10 @@ export default class Team extends BaseModel {
      * Team Owner.
      */
     owner: User;
+    /**
+     * Picture
+     */
+    picture: Media;
     /**
      * Return User Name
      *
@@ -107,5 +112,7 @@ export default class Team extends BaseModel {
      * @return {Team}
      */
     setSlug(slug: string): Team;
+    getPicture(): object;
+    setPicture(pic: Media): Team;
     constructor(data: any);
 }

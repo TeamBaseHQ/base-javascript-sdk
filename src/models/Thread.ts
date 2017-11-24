@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import User from './User';
+import Channel from './Channel';
 
 export default class Thread extends BaseModel {
 
@@ -28,6 +29,11 @@ export default class Thread extends BaseModel {
    * Thread Owner
    */
   owner: User;
+
+  /**
+   * Channel
+   */
+  channel: Channel;
 
   /**
    * Get Thread Owner
@@ -149,6 +155,15 @@ export default class Thread extends BaseModel {
     return this;
   }
 
+  public getChannel(): Channel {
+    return this.channel;
+  }
+
+  public setChannel(channel: Channel): Thread {
+    this.channel = channel;
+    return this;
+  }
+
   constructor(data: any) {
     super(data);
     this.subject = data.subject;
@@ -157,5 +172,6 @@ export default class Thread extends BaseModel {
     this.channel_id = data.channel_id;
     this.slug = data.slug;
     this.owner = new User(data.owner);
+    this.channel = new Channel(data.channel);
   }
 }

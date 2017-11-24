@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import User from './User';
+import Channel from './Channel';
 export default class Thread extends BaseModel {
     subject: string;
     description: string;
@@ -10,6 +11,10 @@ export default class Thread extends BaseModel {
      * Thread Owner
      */
     owner: User;
+    /**
+     * Channel
+     */
+    channel: Channel;
     /**
      * Get Thread Owner
      *
@@ -88,5 +93,7 @@ export default class Thread extends BaseModel {
      * @return
      */
     setSlug(slug: string): Thread;
+    getChannel(): Channel;
+    setChannel(channel: Channel): Thread;
     constructor(data: any);
 }

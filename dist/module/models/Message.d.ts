@@ -1,5 +1,7 @@
 import User from './User';
 import BaseModel from './BaseModel';
+import Thread from './Thread';
+import Media from './Media';
 export default class Message extends BaseModel {
     /**
      * Message content
@@ -29,6 +31,14 @@ export default class Message extends BaseModel {
      * Message Sender
      */
     sender: User;
+    /**
+     * Thread
+     */
+    thread: Thread;
+    /**
+     * Attachments
+     */
+    attachments: Media[];
     /**
      * Get Message Sender
      *
@@ -127,5 +137,9 @@ export default class Message extends BaseModel {
      * @return {Message}
      */
     setSlug(slug: string): Message;
+    getThread(): Thread;
+    setThread(thread: Thread): Message;
+    getAttachments(): Media[];
+    setAttachments(attachments: Media[]): Message;
     constructor(data: any);
 }

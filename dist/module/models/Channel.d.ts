@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import User from './User';
+import Team from './Team';
 export default class Channel extends BaseModel {
     /**
      * Channel name
@@ -30,9 +31,13 @@ export default class Channel extends BaseModel {
      */
     slug: string;
     /**
-     * Team Owner.
+     * Channel Owner.
      */
     owner: User;
+    /**
+     * Team
+     */
+    team: Team;
     /**
      * Return Channel Name
      *
@@ -134,5 +139,17 @@ export default class Channel extends BaseModel {
      * @param {User} owner
      */
     setOwner(owner: User): void;
+    /**
+     * Get Team.
+     *
+     * @return {Team}
+     */
+    getTeam(): Team;
+    /**
+     * Set Team.
+     *
+     * @param {Team} team
+     */
+    setTeam(team: Team): void;
     constructor(data: any);
 }

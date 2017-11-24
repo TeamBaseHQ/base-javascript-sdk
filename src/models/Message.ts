@@ -1,5 +1,7 @@
 import User from './User';
 import BaseModel from './BaseModel';
+import Thread from './Thread';
+import Media from './Media';
 
 export default class Message extends BaseModel {
   /**
@@ -36,6 +38,16 @@ export default class Message extends BaseModel {
    * Message Sender
    */
   sender: User;
+
+  /**
+   * Thread
+   */
+  thread: Thread;
+
+  /**
+   * Attachments
+   */
+  attachments: Media[];
 
   /**
    * Get Message Sender
@@ -184,6 +196,24 @@ export default class Message extends BaseModel {
     return this;
   }
 
+  public getThread(): Thread {
+    return this.thread;
+  }
+
+  public setThread(thread: Thread): Message {
+    this.thread = thread;
+    return this;
+  }
+
+  public getAttachments(): Media[] {
+    return this.attachments;
+  }
+
+  public setAttachments(attachments: Media[]): Message {
+    this.attachments = attachments;
+    return this;
+  }
+
   constructor(data: any) {
     super(data);
     this.content = data.content;
@@ -193,5 +223,12 @@ export default class Message extends BaseModel {
     this.sender_type = data.sender_type;
     this.slug = data.slug;
     this.sender = new User(data.sender);
+    this.thread = new Thread(data.thread);
+
+    if (data.attachments && data.attachments.length > 0) {
+      this.attachments = data.attachments.map((attachment: any) => {
+        return new Media(attachment);
+      });
+    }
   }
 }

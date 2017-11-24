@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import User from './User';
+import Media from './Media';
 
 export default class Team extends BaseModel {
   /**
@@ -31,6 +32,11 @@ export default class Team extends BaseModel {
    * Team Owner.
    */
   owner: User;
+
+  /**
+   * Picture
+   */
+  picture: Media;
 
   /**
    * Return User Name
@@ -155,6 +161,15 @@ export default class Team extends BaseModel {
     return this;
   }
 
+  public getPicture(): object {
+    return this.picture;
+  }
+
+  public setPicture(pic: Media): Team {
+    this.picture = pic;
+    return this;
+  }
+
   constructor(data: any) {
     super(data);
     this.name = data.name;
@@ -163,5 +178,6 @@ export default class Team extends BaseModel {
     this.user_id = data.user_id;
     this.owner = data.owner;
     this.slug = data.slug;
+    this.picture = new Media(data.picture);
   }
 }

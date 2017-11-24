@@ -24,6 +24,6 @@ export default class User extends BaseModel {
     isVerified(): boolean;
     setIsVerified(is_verified: boolean): User;
     getPicture(): object;
-    setPicture(pic: Media): object;
+    setPicture(pic: Media): User;
     constructor(data: any);
 }

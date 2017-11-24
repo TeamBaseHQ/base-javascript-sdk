@@ -53,7 +53,7 @@ export default class User extends BaseModel {
     return this.picture;
   }
 
-  public setPicture(pic: Media): object {
+  public setPicture(pic: Media): User {
     this.picture = pic;
     return this;
   }
@@ -63,6 +63,6 @@ export default class User extends BaseModel {
     this.name = data.name;
     this.email = data.email;
     this.is_verified = data.is_verified;
-    this.picture = data.picture;
+    this.picture = new Media(data.picture);
   }
 }
