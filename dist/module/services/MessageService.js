@@ -41,11 +41,13 @@ var MessageService = /** @class */ (function () {
      * @param thread
      * @param {string} content
      * @param {string} type
+     * @param mediaIds
      * @return {Message}
      */
-    MessageService.prototype.createMessage = function (team, channel, thread, content, type) {
+    MessageService.prototype.createMessage = function (team, channel, thread, content, type, mediaIds) {
         return this.base.post("/teams/" + team + "/channels/" + channel + "/threads/" + thread, {
             content: content, type: type,
+            media_ids: mediaIds,
         }).then(function (response) { return MessageService.makeMessageFromResponse(response); });
     };
     /**

@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel_1 = require("./BaseModel");
 var User_1 = require("./User");
+var Team_1 = require("./Team");
 var Channel = /** @class */ (function (_super) {
     __extends(Channel, _super);
     function Channel(data) {
@@ -23,6 +24,7 @@ var Channel = /** @class */ (function (_super) {
         _this.user_id = data.user_id;
         _this.team_id = data.team_id;
         _this.owner = new User_1.default(data.owner);
+        _this.team = new Team_1.default(data.team);
         _this.slug = data.slug;
         return _this;
     }
@@ -165,6 +167,22 @@ var Channel = /** @class */ (function (_super) {
      */
     Channel.prototype.setOwner = function (owner) {
         this.owner = owner;
+    };
+    /**
+     * Get Team.
+     *
+     * @return {Team}
+     */
+    Channel.prototype.getTeam = function () {
+        return this.team;
+    };
+    /**
+     * Set Team.
+     *
+     * @param {Team} team
+     */
+    Channel.prototype.setTeam = function (team) {
+        this.team = team;
     };
     return Channel;
 }(BaseModel_1.default));

@@ -12,6 +12,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var User_1 = require("./User");
 var BaseModel_1 = require("./BaseModel");
+var Thread_1 = require("./Thread");
+var Media_1 = require("./Media");
 var Message = /** @class */ (function (_super) {
     __extends(Message, _super);
     function Message(data) {
@@ -23,6 +25,12 @@ var Message = /** @class */ (function (_super) {
         _this.sender_type = data.sender_type;
         _this.slug = data.slug;
         _this.sender = new User_1.default(data.sender);
+        _this.thread = new Thread_1.default(data.thread);
+        if (data.attachments && data.attachments.length > 0) {
+            _this.attachments = data.attachments.map(function (attachment) {
+                return new Media_1.default(attachment);
+            });
+        }
         return _this;
     }
     /**
@@ -156,6 +164,20 @@ var Message = /** @class */ (function (_super) {
      */
     Message.prototype.setSlug = function (slug) {
         this.slug = slug;
+        return this;
+    };
+    Message.prototype.getThread = function () {
+        return this.thread;
+    };
+    Message.prototype.setThread = function (thread) {
+        this.thread = thread;
+        return this;
+    };
+    Message.prototype.getAttachments = function () {
+        return this.attachments;
+    };
+    Message.prototype.setAttachments = function (attachments) {
+        this.attachments = attachments;
         return this;
     };
     return Message;

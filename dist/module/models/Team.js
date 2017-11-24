@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel_1 = require("./BaseModel");
+var Media_1 = require("./Media");
 var Team = /** @class */ (function (_super) {
     __extends(Team, _super);
     function Team(data) {
@@ -21,6 +22,7 @@ var Team = /** @class */ (function (_super) {
         _this.user_id = data.user_id;
         _this.owner = data.owner;
         _this.slug = data.slug;
+        _this.picture = new Media_1.default(data.picture);
         return _this;
     }
     /**
@@ -132,6 +134,13 @@ var Team = /** @class */ (function (_super) {
      */
     Team.prototype.setSlug = function (slug) {
         this.slug = slug;
+        return this;
+    };
+    Team.prototype.getPicture = function () {
+        return this.picture;
+    };
+    Team.prototype.setPicture = function (pic) {
+        this.picture = pic;
         return this;
     };
     return Team;

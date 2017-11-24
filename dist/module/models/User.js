@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel_1 = require("./BaseModel");
+var Media_1 = require("./Media");
 var User = /** @class */ (function (_super) {
     __extends(User, _super);
     function User(data) {
@@ -18,6 +19,7 @@ var User = /** @class */ (function (_super) {
         _this.name = data.name;
         _this.email = data.email;
         _this.is_verified = data.is_verified;
+        _this.picture = new Media_1.default(data.picture);
         return _this;
     }
     User.prototype.getName = function () {
@@ -39,6 +41,13 @@ var User = /** @class */ (function (_super) {
     };
     User.prototype.setIsVerified = function (is_verified) {
         this.is_verified = is_verified;
+        return this;
+    };
+    User.prototype.getPicture = function () {
+        return this.picture;
+    };
+    User.prototype.setPicture = function (pic) {
+        this.picture = pic;
         return this;
     };
     return User;

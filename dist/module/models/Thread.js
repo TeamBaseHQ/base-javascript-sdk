@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel_1 = require("./BaseModel");
 var User_1 = require("./User");
+var Channel_1 = require("./Channel");
 var Thread = /** @class */ (function (_super) {
     __extends(Thread, _super);
     function Thread(data) {
@@ -22,6 +23,7 @@ var Thread = /** @class */ (function (_super) {
         _this.channel_id = data.channel_id;
         _this.slug = data.slug;
         _this.owner = new User_1.default(data.owner);
+        _this.channel = new Channel_1.default(data.channel);
         return _this;
     }
     /**
@@ -130,6 +132,13 @@ var Thread = /** @class */ (function (_super) {
      */
     Thread.prototype.setSlug = function (slug) {
         this.slug = slug;
+        return this;
+    };
+    Thread.prototype.getChannel = function () {
+        return this.channel;
+    };
+    Thread.prototype.setChannel = function (channel) {
+        this.channel = channel;
         return this;
     };
     return Thread;
